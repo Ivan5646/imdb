@@ -1,0 +1,49 @@
+Plan
+Use source code https://github.com/rajaraodv/redux/tree/master/examples/todos. After understanding, I can use source code from redux.org to build an app with server interaction.
+
+
+Stopped at
+7.3 Create Container Component — Filter Container
+
+
+ https://medium.com/@rajaraodv/step-by-step-guide-to-building-react-redux-apps-using-mocks-48ca0f47f9a
+ Redux — A complimentary library to React that provides a way to easily keep the data(State) and the events(Actions).
+
+Redux Terms: “Actions” And “States”
+Every component does two things:
+1. Render DOM based on some data. This data is called as a “state”.
+2. Listen to the user and other events and send them to JS functions. These are called “Actions”.
+
+
+Redux Term: “Action Creators”
+Action Creators are simple functions whose job is to receive data from the DOM event, format it as a formal JSON “Action” object and return that object (aka “Action”). This helps us to formalize how the data/payload look.
+
+export const selectUser = (user) => { // this is an Action Creator
+    console.log("You clicked on user: ", user.first);
+    return { // this is the action itself or object
+        type: "USER_SELECTED",
+        payload: user
+    }
+}
+
+
+Redux Term: “Reducers”
+Reducers are functions that take “state” from Redux and “action” JSON object and returns a new “state” to be stored back in Redux.
+1. Reducer functions are called by the “Container” containers when there is a user action.
+2. If the reducer changes the state, Redux passes the new state to each component and React re-renders each component
+
+For example the below function takes Redux’ state(an array of previous todos), and returns a **new** array of todos(new state) w/ the new Todo added if action’s type is “ADD_TODO”.
+const todo = (state = [], action) => {
+ switch (action.type) {
+  case ‘ADD_TODO’:
+     return 
+       […state,{id: action.id, text: action.text, completed:false}]; 
+ }
+
+
+Redux Term: “Presentational” and “Container” Components
+Keeping React and Redux logic inside each component can make it messy, so Redux recommends creating a dummy presentation only component called “Presentational” component and a parent wrapper component called “Container” component that deals w/ Redux, dispatch “Actions” and more. 
+The parent Container then passes the data to the presentational component, handle events, deal with React on behalf of Presentational component.
+
+
+

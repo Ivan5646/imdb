@@ -1,0 +1,14 @@
+https://gist.github.com/krambertech/ecb3890824fd7ada0f4ec1ff55125758
+
+Make correct app architecture...
+
+
+
+1) При открытии приложения, должен отображаться список популярных фильмов с пагинацией или динамической подгрузкой (на выбор).
+Делать запрос для получения фильмов. Где в react+redux?
+https://daveceddia.com/where-fetch-data-redux/
+
+
+
+api
+https://www.themoviedb.org/settings/api
