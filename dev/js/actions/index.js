@@ -4,4 +4,4 @@ export const selectUser = (arg) => { // this is an Action Creator. How is the ar
         type: "USER_SELECTED", // what is this?
         payload: arg
     }
-}
+};

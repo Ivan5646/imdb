@@ -12,3 +12,7 @@ https://daveceddia.com/where-fetch-data-redux/
 
 api
 https://www.themoviedb.org/settings/api
+
+
+things to do
+1) ...state make it work - just try naother react redux boilerplate

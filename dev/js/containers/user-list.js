@@ -33,8 +33,8 @@ function mapStateToProps(state){ //takes a piece of state which is part of the S
     };
 }
 
-function matchDispathToProps(dispatch){
+function matchDispatchToProps(dispatch){
     return bindActionCreators({selectUser: selectUser}, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispathToProps)(UserList); // this is now a contanier
+export default connect(mapStateToProps, matchDispatchToProps)(UserList); // this is now a contanier

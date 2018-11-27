@@ -2,6 +2,7 @@ import React from 'react';
 import UserList from '../containers/user-list';
 import UserDetail from '../containers/user-detail';
 import KittiesList from '../containers/kitties-list';
+import PoductList from '../containers/productList';
 require('../../scss/style.scss');
 
 const App = () => (
@@ -14,6 +15,8 @@ const App = () => (
         <hr/>
         <h2>Kitties List:</h2>
         <KittiesList />
+        <h2>Popular List:</h2>
+        <PoductList />
     </div>
 );
 
