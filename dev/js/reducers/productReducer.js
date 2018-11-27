@@ -5,7 +5,9 @@ export default function(state = {}, action) {
             return state;
         case "FETCH_SUCCESS":
             console.log("FETCH_SUCCESS", state);
-            return {state, posts: action.payload};
+            return [...state,
+                {posts: action.payload}
+            ];
         default:
             return state;
     }

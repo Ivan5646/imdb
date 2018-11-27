@@ -15,4 +15,8 @@ https://www.themoviedb.org/settings/api
 
 
 things to do
-1) ...state make it work - just try naother react redux boilerplate
+1) ...state spread syntax error, make it work - just try another react redux boilerplate
+https://stackoverflow.com/questions/38669951/react-redux-spread-operator-in-reducer-returning-error-unexpected-token  fixed the error
+
+2) fetch data from api
+example http://jsfiddle.net/cdagli/b2uq8704/6/
