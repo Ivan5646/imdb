@@ -4,9 +4,9 @@ Make correct app architecture...
 
 
 
-1) При открытии приложения, должен отображаться список популярных фильмов с пагинацией или динамической подгрузкой (на выбор).
-Делать запрос для получения фильмов. Где в react+redux?
-https://daveceddia.com/where-fetch-data-redux/
+// 1) При открытии приложения, должен отображаться список популярных фильмов с пагинацией или динамической подгрузкой (на выбор).
+// Делать запрос для получения фильмов. Где в react+redux?
+// https://daveceddia.com/where-fetch-data-redux/
 
 
 
@@ -14,9 +14,39 @@ api
 https://www.themoviedb.org/settings/api
 
 
-things to do
-1) ...state spread syntax error, make it work - just try another react redux boilerplate
-https://stackoverflow.com/questions/38669951/react-redux-spread-operator-in-reducer-returning-error-unexpected-token  fixed the error
+// things to do
+// 2) fetch data from api
+// ex. 1  http://jsfiddle.net/cdagli/b2uq8704/6/  data in not coming to render()
+// ex. 2 https://medium.com/@lavitr01051977/basic-react-redux-app-with-async-call-to-api-e478e6e0c48b
 
-2) fetch data from api
-example http://jsfiddle.net/cdagli/b2uq8704/6/
+// 3) inspect redux action on console, standart redux debugger? redux-logger?
+// pass multiple args to middleware? and reducers?
+const store = createStore(
+    allReducers,
+    applyMiddleware(thunk, logger)
+);  // typeerror middleware is not a function
+
+// a) 
+const store = applyMiddleware(thunk, logger)(createStore) // would be missing resucers
+// b) 
+const store = applyMiddleware(thunk, logger)(createStore)(allReducers); // error
+//c)
+ const store = applyMiddleware(thunk, logger)(createStore(allReducers)); // error
+
+ // d) https://stackoverflow.com/questions/47805556/how-to-add-redux-logger-on-middlewares   middleware is not a function
+
+ // workded with an emprty instance of a logger
+ // https://stackoverflow.com/questions/42976674/cant-install-redux-logger
+import  createLogger  from 'redux-logger'
+const logger = createLogger({
+    //empty options
+});
+const store = createStore(
+    reducer,
+    applyMiddleware(logger)
+);
+
+
+// Done
+// 1) Done. ...state spread syntax error, make it work - just try another react redux boilerplate
+// https://stackoverflow.com/questions/38669951/react-redux-spread-operator-in-reducer-returning-error-unexpected-token  fixed the error
