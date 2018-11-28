@@ -10,7 +10,7 @@ class ProductList extends React.Component {
     render(){
         return (
             <ul>
-                <li>{/*this.props.posts[0].title*/}</li>
+                <li>{this.props ? this.props.posts : "no props"}</li>
 
                 {/*
                 this.props.posts.map((post) =>{
@@ -28,7 +28,7 @@ function mapStateToProps(state){
     if (state.products[0]) {
         console.log("state.products[0].posts[0].title", state.products[0].posts[0].title); // there are posts here but in render() posts are undefined
         return {
-            posts: state.products[0].posts
+            posts: state.products[0].posts[0].title
         }
     } else {
         return {}
@@ -36,7 +36,7 @@ function mapStateToProps(state){
 
 }
 
-console.log("posts productList", ProductList.posts);
+console.log("ProductList.props", ProductList.props);
 
 function matchDispatchToProps(dispatch){
     return bindActionCreators({fetchPostsWithRedux: fetchPostsWithRedux}, dispatch)
