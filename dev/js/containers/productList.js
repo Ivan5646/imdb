@@ -25,10 +25,15 @@ class ProductList extends React.Component {
 }
 
 function mapStateToProps(state){
-    console.log("state.products.posts", state.products.posts); // there are posts here but in render() posts are undefined
-    return {
-        posts: state.products.posts
+    if (state.products[0]) {
+        console.log("state.products[0].posts[0].title", state.products[0].posts[0].title); // there are posts here but in render() posts are undefined
+        return {
+            posts: state.products[0].posts
+        }
+    } else {
+        return {}
     }
+
 }
 
 console.log("posts productList", ProductList.posts);
