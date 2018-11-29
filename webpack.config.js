@@ -1,36 +1,32 @@
-var path = require('path');
-var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devServer: {
-        inline: true,
-        contentBase: './src',
-        port: 3000
-    },
-    devtool: 'cheap-module-eval-source-map',
-    entry: './dev/js/index.js',
-    "presets": [
-        "react",
-        "es2015"
-    ],
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.scss/,
-                loader: 'style-loader!css-loader!sass-loader'
-            }
-        ]
-    },
-    output: {
-        path: 'src',
-        filename: 'js/bundle.min.js'
-    },
+
     plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin()
-    ]
+        new HtmlWebpackPlugin({
+            template: "./src/index.html",  
+        })
+    ],
+    devtool: 'inline-source-map',
+    module: {
+        rules: [
+            { test: /\.css$/, use:['style-loader', 'css-loader']},
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+            {
+                test: /\.html$/,
+                use: [
+                  {
+                    loader: "html-loader",
+                    options: { minimize: true }
+                  }
+                ]
+              }
+        ]
+    }
 };
+
+
+
+
+
+

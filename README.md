@@ -1,33 +1,28 @@
-![](http://i.imgur.com/DUiL9yn.png)
+# ReduxAsyncActions
+Simple React-Redux example with async/sync actions using  Redux Thunk middleware
 
-# React/Sass/Redux Boilerplate
+### Usage
 
-Boilerplate and guide for a React/Sass/Redux build.
-
-## Getting Started
-
-To get started, first install all the necessary dependencies.
 ```
-> npm install
-```
+git clone https://github.com/Lavitr/ReduxAsyncActions.git
+cd ReduxAsyncActions 
+npm install
+npm start
+open http://localhost:8080  (should start automatically )
 
-Run an initial webpack build
-```
-> webpack
-```
 
-Start the development server (changes will now update live in browser)
+## Available Commands
+
+- `npm start` - start the dev server
+- `npm run dev` - create a developer build in `dist` folder
+- `npm run build` - create a production ready build in `dist` folder
+- `npm test` - run all tests
+
 ```
-> npm run start
-```
+### Dependencies
 
-To view your project, go to: [http://localhost:3000/](http://localhost:3000/)
+* React
+* Webpack
+* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+* [babel-loader](https://github.com/babel/babel-loader)
 
-## Links
-
-- [Donate](https://www.patreon.com/thenewboston)
-- [thenewboston.com](https://thenewboston.com/)
-- [Facebook](https://www.facebook.com/TheNewBoston-464114846956315/)
-- [Twitter](https://twitter.com/bucky_roberts)
-- [Google+](https://plus.google.com/+BuckyRoberts)
-- [reddit](https://www.reddit.com/r/thenewboston/)
