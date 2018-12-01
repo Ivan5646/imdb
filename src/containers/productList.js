@@ -8,20 +8,18 @@ class ProductList extends React.Component {
         this.props.fetchPosts()
     }
     render(){
-        if (this.props.posts) {
+        if (this.props.posts) { // had to check for this.props.posts, not this.props
             console.log("this.props.posts[0]", this.props.posts[0]);
 
             return (
                 <ul>
-                    <li>{this.props.posts[0].title}</li>
-
-                    {/*
-                this.props.posts.map((post) =>{
-                    return(
-                        <li>{post.title}</li>
-                    )
-                })
-            */}
+                    {
+                        this.props.posts.map((post) =>{
+                            return(
+                                <li key={post.id}>{post.title}</li>
+                            )
+                        })
+                    }
                 </ul>
             )
         } else {
