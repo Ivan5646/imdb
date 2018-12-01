@@ -15,7 +15,7 @@ https://www.themoviedb.org/settings/api
 
 
 // Things to do.
-
+// Add scss to css functionality in webpack
 
 
 
