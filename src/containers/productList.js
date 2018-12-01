@@ -8,22 +8,27 @@ class ProductList extends React.Component {
         this.props.fetchPosts()
     }
     render(){
-        if (this.props) {
-            //console.log("this.props.posts[0] render", this.props.posts[0]); // this.props.posts ok
-        }
-        return (
-            <ul>
-                <li>{/*this.props ? this.props[0] : "no props"*/}</li>
+        if (this.props.posts) {
+            console.log("this.props.posts[0]", this.props.posts[0]);
 
-                {/*
+            return (
+                <ul>
+                    <li>{this.props.posts[0].title}</li>
+
+                    {/*
                 this.props.posts.map((post) =>{
                     return(
                         <li>{post.title}</li>
                     )
                 })
             */}
-            </ul>
-        )
+                </ul>
+            )
+        } else {
+            return (
+                <p>Data is loading</p>
+            )
+        }
     }
 }
 
@@ -33,7 +38,7 @@ function mapStateToProps(state){
         console.log("state.posts.posts.[0]", state.posts.posts[0]);
     }
     return {
-        posts: state.posts
+        posts: state.posts.posts
     }
 }
 
