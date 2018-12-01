@@ -1,16 +1,8 @@
-import { SELECT_CHANNEL, REQUEST_POSTS, RECEIVE_POSTS } from '../actions';
+import {combineReducers} from "redux";
+import productReducer from "./productReducer";
 
-const reducer = (state = {}, action) => {
-  switch (action.type) {
-    case SELECT_CHANNEL:
-      return { ...state, channel: action.channel };
-    case REQUEST_POSTS:
-      return { ...state, loading: true };
-    case RECEIVE_POSTS:
-      return { ...state, json: action.json, loading: false };
-    default:
-      return state;
-  }
-};
+const allReducers = combineReducers({ // that will be thrown to the Store
+    products: productReducer
+});
 
-export default reducer;
+export default allReducers;

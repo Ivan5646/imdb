@@ -1,14 +1,11 @@
 import React from 'react'
-import ChannelsField from './ChannelsField'
-import Button from '../containers/Button'
-import TopNews from '../containers/TopNews'
+import ProductList from '../containers/productList'
 
 const App = () => (
-  <div>
-    < ChannelsField />
-    <Button />
-    <TopNews />
-  </div>
+    <div>
+        <h3>Posts</h3>
+        <ProductList />
+    </div>
 )
 
 export default App;
