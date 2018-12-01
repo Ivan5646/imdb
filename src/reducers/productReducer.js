@@ -1,12 +1,16 @@
-export default function(state = {}, action) {
+import { SELECT_CHANNEL, REQUEST_POSTS, RECEIVE_POSTS } from '../actions/productActions';
+
+const reducer = (state = {}, action) => {
     switch (action.type) {
-        case "FETCH_REQUEST":
-            console.log("FETCH_REQUEST", state);
-            return state;
-        case "FETCH_SUCCESS":
-            console.log("FETCH_SUCCESS", state);
-            return {...state, posts: action.payload};
+        case SELECT_CHANNEL:
+            return { ...state, channel: action.channel };
+        case REQUEST_POSTS:
+            return { ...state, loading: true };
+        case RECEIVE_POSTS:
+            return { ...state, posts: action.posts, loading: false };
         default:
             return state;
     }
 };
+
+export default reducer;

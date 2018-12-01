@@ -1,42 +1,32 @@
-console.log("test3");
+export const SELECT_CHANNEL = 'SELECT_CHANNEL';  // ?
+export const REQUEST_POSTS = 'REQUEST_POSTS';
+export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 
-function fetchPosts() {
-    const URL = "https://jsonplaceholder.typicode.com/posts";
-    return fetch(URL, { method: 'GET'})
-        .then( response => Promise.all([response, response.json()]));
+export const getChannel = channel => ({
+    type: SELECT_CHANNEL,
+    channel,
+});
+
+export const requestPosts = () => ({
+    type: REQUEST_POSTS,
+});
+
+export const receivedPosts = posts => ({
+    type: RECEIVE_POSTS,
+    posts: posts,
+});
+
+export function fetchPosts(channel) {
+    return function (dispatch) {
+        dispatch(requestPosts());
+        return fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(
+                response => response.json(),
+                error => console.log('An error occurred.', error),
+            )
+            .then((posts) => {
+                    dispatch(receivedPosts(posts));
+                },
+            );
+    };
 }
-
-export const fetchPostsRequest = () =>{
-    return {
-        type: "FETCH_REQUEST"
-    }
-};
-
-export const  fetchPostsSuccess = (payload) => {
-    return {
-        type: "FETCH_SUCCESS",
-        payload
-    }
-};
-
-export const fetchPostsError = () => {
-    return {
-        type: "FETCH_ERROR"
-    }
-};
-
-export const fetchPostsWithRedux = () => {
-    return (dispatch) => {
-        dispatch(fetchPostsRequest());
-        return fetchPosts().then(([response, json]) =>{
-            if(response.status === 200){
-                console.log("fetchPostsSuccess(json)", fetchPostsSuccess(json));
-                dispatch(fetchPostsSuccess(json))
-            }
-            else{
-                console.log("fetchPostsError()", fetchPostsError());
-                dispatch(fetchPostsError())
-            }
-        })
-    }
-};
