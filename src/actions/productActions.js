@@ -1,12 +1,9 @@
-export const REQUEST_POSTS = 'REQUEST_POSTS';
-export const RECEIVE_POSTS = 'RECEIVE_POSTS';
-
 export const requestPosts = () => ({
-    type: REQUEST_POSTS,
+    type: 'REQUEST_POSTS',
 });
 
 export const receivedPosts = posts => ({
-    type: RECEIVE_POSTS,
+    type: 'RECEIVE_POSTS',
     posts: posts,
 });
 
