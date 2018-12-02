@@ -8,17 +8,17 @@ class PopularList extends React.Component {
         this.props.fetchPopulars()
     }
     render(){
-        if (this.props.popularMovies) {
-
+        if (this.props.popularMovies.length) {
+            //console.log("this.props.popularMovies[0].title", this.props.popularMovies[0].title);
             return (
                 <ul>
-                    {/*
-                        this.props.posts.map((post) =>{
+                    {
+                        this.props.popularMovies.map((movie) =>{
                             return(
-                                <li key={post.id}>{post.title}</li>
+                                <li key={movie.id}>{movie.title}</li>
                             )
                         })
-                    */}
+                    }
                 </ul>
             )
         } else {
@@ -30,11 +30,15 @@ class PopularList extends React.Component {
 }
 
 function mapStateToProps(state){
-    // if (state) {
-    //     console.log("state", state);
-    // }
-    return {
-        popularMovies: state.popularMovies
+    if (state.popularMovies.result) {
+        console.log("state.popularMovies.result.results", state.popularMovies.result.results);
+        return {
+            popularMovies: state.popularMovies.result.results
+        }
+    } else {
+        return {
+            popularMovies: state
+        }
     }
 }
 
