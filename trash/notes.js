@@ -6,7 +6,7 @@ Make correct app architecture...
 
 // 1) При открытии приложения, должен отображаться список популярных фильмов с пагинацией или динамической подгрузкой (на выбор).
 // Делать запрос для получения фильмов. Где в react+redux?
-// https://daveceddia.com/where-fetch-data-redux/
+
 
 // popular movies request 
 https://api.themoviedb.org/3/movie/popular?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
@@ -45,6 +45,7 @@ const store = createStore(
 );
 
 // Fetch data from api.
+// https://daveceddia.com/where-fetch-data-redux/
 // ex. 1  http://jsfiddle.net/cdagli/b2uq8704/6/  data in not coming to render() and first time state without posts, secons has the posts from api
 // ex. 2 https://medium.com/@lavitr01051977/basic-react-redux-app-with-async-call-to-api-e478e6e0c48b  https://github.com/Lavitr/ReduxAsyncActions
  if (this.props.posts) { ... } // resolved with this ckeck in render method of container 
