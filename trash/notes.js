@@ -8,6 +8,9 @@ Make correct app architecture...
 // Делать запрос для получения фильмов. Где в react+redux?
 // https://daveceddia.com/where-fetch-data-redux/
 
+// popular movies request 
+https://api.themoviedb.org/3/movie/popular?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
+
 
 
 api
