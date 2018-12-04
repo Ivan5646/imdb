@@ -9,30 +9,28 @@ class PopularList extends React.Component {
     constructor(props) {
         super(props);
 
-        this.test = this.test.bind(this);
-        this.testClick.test = this.testClick.bind(this);
+        this.state = {
+            page: 0,
+        };
+        this.loadMore = this.loadMore.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchPopulars();
-        //this.test();
+        this.loadMore();
     }
 
-    test () {
-        console.log("test waypoint");
-    }
-
-    testClick () {
-        console.log("click test");
+    loadMore () {
+        this.setState = ({ page: this.state.page += 1 });
+        this.props.fetchPopulars(this.state.page);
+        console.log("this.state", this.state);
     }
 
     render(){
         if (this.props.popularMovies.length) {
-            //console.log("this.props.popularMovies[0].title", this.props.popularMovies[0].title);
-            console.log("this.props.currentPage", this.props.currentPage);
+            console.log("this.props.popularMovies", this.props.popularMovies);
             return (
                 <section>
-                    <button onClick={this.testClick}>Test event</button>
                     <ul>
                         {
                             this.props.popularMovies.map((movie) =>{
@@ -48,7 +46,7 @@ class PopularList extends React.Component {
                     <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
                     <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
                     <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
-                    <Waypoint onEnter={this.test}/>
+                    <Waypoint onEnter={this.loadMore}/>
                 </section>
             )
         } else {
@@ -61,10 +59,10 @@ class PopularList extends React.Component {
 
 function mapStateToProps(state){
     if (state.popularMovies.result) {
-        console.log("state.popularMovies.result.results", state.popularMovies.result.results);
+        //console.log("state.popularMovies.result.results", state.popularMovies.result.results);
         return {
             popularMovies: state.popularMovies.result.results,
-            currentPage: 0
+            //currentPage: 0
         }
     } else {
         return {
