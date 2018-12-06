@@ -4,25 +4,25 @@ Make correct app architecture...
 
 
 
-// 1) При открытии приложения, должен отображаться список популярных фильмов с пагинацией или динамической подгрузкой (на выбор).
-// create infinity scroll
+// При открытии приложения, должен отображаться список популярных фильмов с пагинацией или динамической подгрузкой (на выбор).
+// Create infinity scroll
 // either use react comp either write one myself, js functionlaity in the video below
 // https://www.youtube.com/watch?v=eziREnZPml4   js fetch on scroll
-<InfiniteScroll
-    pageStart={0}
-    loadMore={this.props.fetchPopulars()}
-    hasMore={true || false}
-    loader={<div className="loader" key={0}>Loading ...</div>}
->
-    {this.props.popularMovies.toString()}
-</InfiniteScroll>
+
 // Questions.
 // how to pass a page number of the query? how to keep track of the counter?
-// a) ! https://medium.com/@k88lawrence/dead-simple-infinite-scroll-with-kaminari-and-react-waypoint-8073c22be7ed
-// waypoint onEnter does not fire (fires only on load)
-<Waypoint onEnter={() => {this.test()}}> // did not work
-// b) https://github.com/joshwnj/react-visibility-sensor thia shit is not what I need?
+// A) try with waypoint and my own reducer logics
+// ! https://medium.com/@k88lawrence/dead-simple-infinite-scroll-with-kaminari-and-react-waypoint-8073c22be7ed  the case with unlimitied data request
 <Waypoint onEnter={this.test}/> /// wokred, placed as a last element !
+// how to load data with limited data fetched at a time (per fetch request)?
+// 1) keep adding movies to the state (not rewrite it with new data requests)
+// How do I keep adding movies to the state? The only way is to persist to LS and add up new data to there??
+// 2) split data to show 5 or 10 movies at each scroll (instead of default 20 which is too much?) 
+        case 'RECEIVED_MORE':
+            return { ...state, moreMovies: state.moreMovies.push(action.result.results), loading: false }; // error push is not a function
+// B) Try with ready made component like https://www.npmjs.com/package/react-lazy-load ?
+// if none is gonna work skip this, keep on doing other tasks of the project
+
 
 
 // - Search field to filter movies

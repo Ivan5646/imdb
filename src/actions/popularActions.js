@@ -7,6 +7,11 @@ export const receivedPopulars = (result) => ({
     result: result,
 });
 
+export const moreMovies = (result) => ({
+    type: 'RECEIVED_MORE',
+    result: result,
+});
+
 export function fetchPopulars(page) {
     return function (dispatch) { // what is dispatch?
         dispatch(requestPopualrs());
@@ -21,3 +26,19 @@ export function fetchPopulars(page) {
             );
     };
 }
+
+export function loadMore(page) {
+    return function (dispatch) { // what is dispatch?
+        dispatch(requestPopualrs());
+        return fetch(`https://api.themoviedb.org/3/movie/popular?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=${page}`)
+            .then(
+                response => response.json(),
+                error => console.log('An error occurred.', error),
+            )
+            .then((result) => {
+                    dispatch(moreMovies(result));
+                },
+            );
+    };
+}
+

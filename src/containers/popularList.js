@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import Waypoint from 'react-waypoint';
-import { fetchPopulars } from "../actions/popularActions";
+import { fetchPopulars, loadMore } from "../actions/popularActions";
 
 class PopularList extends React.Component {
 
@@ -17,16 +17,17 @@ class PopularList extends React.Component {
 
     componentDidMount(){
         this.props.fetchPopulars();
-        this.loadMore();
     }
 
     loadMore () {
         this.setState = ({ page: this.state.page += 1 });
-        this.props.fetchPopulars(this.state.page);
+        this.props.loadMore(this.state.page);
         console.log("this.state", this.state);
     }
 
     render(){
+        console.log("this.props.popularMovies", this.props.popularMovies);
+        console.log("this.props.morePopularMovies", this.props.morePopularMovies);
         if (this.props.popularMovies.length) {
             console.log("this.props.popularMovies", this.props.popularMovies);
             return (
@@ -42,10 +43,7 @@ class PopularList extends React.Component {
                     </ul>
                     <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
                     <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
-                    <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
-                    <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
-                    <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
-                    <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
+                    <h4>{this.props.morePopularMovies.length}</h4>
                     <Waypoint onEnter={this.loadMore}/>
                 </section>
             )
@@ -58,11 +56,12 @@ class PopularList extends React.Component {
 }
 
 function mapStateToProps(state){
-    if (state.popularMovies.result) {
+    console.log("state", state);
+    if (state.popularMovies.firstMovies) {
         //console.log("state.popularMovies.result.results", state.popularMovies.result.results);
         return {
-            popularMovies: state.popularMovies.result.results,
-            //currentPage: 0
+            popularMovies: state.popularMovies.firstMovies, // popularMovies is the name of the reducer
+            morePopularMovies: state.popularMovies.moreMovies ? state.popularMovies.moreMovies : "noData"
         }
     } else {
         return {
@@ -72,7 +71,7 @@ function mapStateToProps(state){
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({fetchPopulars: fetchPopulars}, dispatch)
+    return bindActionCreators({fetchPopulars: fetchPopulars, loadMore: loadMore}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PopularList); // this is now a contanier
