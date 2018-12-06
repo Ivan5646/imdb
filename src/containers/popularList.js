@@ -21,15 +21,15 @@ class PopularList extends React.Component {
 
     loadMore () {
         this.setState = ({ page: this.state.page += 1 });
-        this.props.loadMore(this.state.page);
+        this.props.fetchPopulars(this.state.page);
         console.log("this.state", this.state);
     }
 
     render(){
         console.log("this.props.popularMovies", this.props.popularMovies);
-        console.log("this.props.morePopularMovies", this.props.morePopularMovies);
+       // console.log("this.props.morePopularMovies", this.props.morePopularMovies);
         if (this.props.popularMovies.length) {
-            console.log("this.props.popularMovies", this.props.popularMovies);
+            console.log("if, this.props.popularMovies", this.props.popularMovies);
             return (
                 <section>
                     <ul>
@@ -43,13 +43,14 @@ class PopularList extends React.Component {
                     </ul>
                     <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
                     <p>text random text</p><p>text random text</p><p>text random text</p><p>text random text</p>
-                    <h4>{this.props.morePopularMovies.length}</h4>
+                    <h4>{this.props.popularMovies.length}</h4>
                     <Waypoint onEnter={this.loadMore}/>
                 </section>
             )
         } else {
+            console.log("else, this.props.popularMovies", this.props.popularMovies);
             return (
-                <p>Data is loading</p>
+                <p>No data</p>
             )
         }
     }
@@ -57,11 +58,11 @@ class PopularList extends React.Component {
 
 function mapStateToProps(state){
     console.log("state", state);
-    if (state.popularMovies.firstMovies) {
+    if (state.popularMovies.allMovies) {
         //console.log("state.popularMovies.result.results", state.popularMovies.result.results);
         return {
-            popularMovies: state.popularMovies.firstMovies, // popularMovies is the name of the reducer
-            morePopularMovies: state.popularMovies.moreMovies ? state.popularMovies.moreMovies : "noData"
+            popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
+            //morePopularMovies: state.popularMovies.moreMovies ? state.popularMovies.moreMovies : "noData"
         }
     } else {
         return {
