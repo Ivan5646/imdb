@@ -10,19 +10,23 @@ Make correct app architecture...
 // https://www.youtube.com/watch?v=eziREnZPml4   js fetch on scroll
 
 // Questions.
-// how to pass a page number of the query? how to keep track of the counter?
-// A) try with waypoint and my own reducer logics
+// how to pass a page number of the query? how to keep track of the counter? In the container's state.
+// A) Try with waypoint and my own reducer logics
 // ! https://medium.com/@k88lawrence/dead-simple-infinite-scroll-with-kaminari-and-react-waypoint-8073c22be7ed  the case with unlimitied data request
 <Waypoint onEnter={this.test}/> /// wokred, placed as a last element !
 // how to load data with limited data fetched at a time (per fetch request)?
 // 1) keep adding movies to the state (not rewrite it with new data requests)
 // How do I keep adding movies to the state? The only way is to persist to LS and add up new data to there??
 // 2) split data to show 5 or 10 movies at each scroll (instead of default 20 which is too much?) 
-        case 'RECEIVED_MORE':
-            return { ...state, moreMovies: state.moreMovies.push(action.result.results), loading: false }; // error push is not a function
+        case 'RECEIVE_POPULAR':
+            return { ...state, allMovies: state.allMovies.concat(action.result.results), loading: false }; // used .concat to concatenate arrays
 // B) Try with ready made component like https://www.npmjs.com/package/react-lazy-load ?
 // if none is gonna work skip this, keep on doing other tasks of the project
 
+
+// - Checks of type are unnecessary, remove?
+if (this.props.popularMovies.length) // in render()
+if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // - Search field to filter movies
