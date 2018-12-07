@@ -8,6 +8,7 @@ class PopularList extends React.Component {
 
     constructor(props) {
         super(props);
+        this.dbLink = "https://image.tmdb.org/t/p/w400";
 
         this.state = {
             page: 1,
@@ -30,19 +31,20 @@ class PopularList extends React.Component {
         if (this.props.popularMovies.length) {
             console.log("if, this.props.popularMovies", this.props.popularMovies);
             return (
-                <section>
+                <section className={"movies"}>
                     <h4>{this.props.popularMovies.length}</h4>
-                    <ul>
+                    <div className={"movies__block"}>
                         {
                             this.props.popularMovies.map((movie) =>{
                                 return(
-                                    <li key={movie.id}>{movie.title}</li>
+                                    <div className={"movie-card"} key={movie.id}>
+                                        <div>{movie.title}</div>
+                                        <img src={`${this.dbLink}${movie.poster_path}`}></img>
+                                    </div>
                                 )
                             })
                         }
-                    </ul>
-                    <p>text text text </p><p>text text text </p><p>text text text </p><p>text text text </p><p>text text text </p>
-                    <p>text text text </p><p>text text text </p><p>text text text </p><p>text text text </p><p>text text text </p>
+                    </div>
                     <Waypoint onEnter={this.loadMore}/>
                 </section>
             )
