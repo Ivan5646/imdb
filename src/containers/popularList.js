@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import Waypoint from 'react-waypoint';
-import { fetchPopulars } from "../actions/popularActions";
+import { fetchPopulars, searchMovies } from "../actions/popularActions";
 
 class PopularList extends React.Component {
 
@@ -14,16 +14,31 @@ class PopularList extends React.Component {
             page: 1,
         };
         this.loadMore = this.loadMore.bind(this);
+        this.filterMovies = this.filterMovies.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchPopulars();
     }
 
-    loadMore () {
+    loadMore() {
         this.setState = ({ page: this.state.page += 1 });
         this.props.fetchPopulars(this.state.page);
         console.log("this.state", this.state);
+    }
+
+    filterMovies(event) {
+        // console.log("event.target.value", event.target.value);
+        console.log("filterMovies, this.props.popularMovies", this.props.popularMovies);
+        //this.props.searchMovies(event.target.value.toLowerCase());
+        let filteredArray = this.props.popularMovies.filter((movie) => {
+           if (movie.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1) {
+               console.log("found", movie.title);
+               return movie;
+           }
+        });
+        console.log("filteredArray", filteredArray);
+
     }
 
     render(){
@@ -33,6 +48,7 @@ class PopularList extends React.Component {
             return (
                 <section className={"movies"}>
                     <h4>{this.props.popularMovies.length}</h4>
+                    <input type="text" placeholder="Search" onChange={this.filterMovies}/>
                     <div className={"movies__block"}>
                         {
                             this.props.popularMovies.map((movie) =>{
@@ -71,7 +87,7 @@ function mapStateToProps(state){
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({fetchPopulars: fetchPopulars}, dispatch)
+    return bindActionCreators({fetchPopulars: fetchPopulars, searchMovies: searchMovies}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PopularList); // this is now a contanier

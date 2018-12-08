@@ -22,4 +22,9 @@ export function fetchPopulars(page) {
     };
 }
 
+export const searchMovies = (searchString) => ({
+    type: 'SEARCH_MOVIES',
+    searchString: searchString
+});
+
 

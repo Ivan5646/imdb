@@ -4,6 +4,8 @@ const popularReducer = (state = {allMovies: []}, action) => {
             return { ...state, loading: true };
         case 'RECEIVE_POPULAR':
             return { ...state, allMovies: state.allMovies.concat(action.result.results), loading: false };
+        case 'SEARCH_MOVIES':
+            return {}; // filtered movies array has to be returned here ?
         default:
             return state;
     }
