@@ -5,7 +5,16 @@ const popularReducer = (state = {allMovies: []}, action) => {
         case 'RECEIVE_POPULAR':
             return { ...state, allMovies: state.allMovies.concat(action.result.results), loading: false };
         case 'SEARCH_MOVIES':
-            return {}; // filtered movies array has to be returned here ?
+            return {
+                ... state,
+                allMovies: state.allMovies.filter((movie) => {
+                    if (movie.title.toLowerCase().search(action.searchString.toLowerCase()) !== -1) {
+                        console.log("found", movie.title);
+                        return movie;
+                    }
+                }),
+                loading: false
+            }; // filtered movies array has to be returned here ?
         default:
             return state;
     }

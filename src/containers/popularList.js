@@ -28,17 +28,7 @@ class PopularList extends React.Component {
     }
 
     filterMovies(event) {
-        // console.log("event.target.value", event.target.value);
-        console.log("filterMovies, this.props.popularMovies", this.props.popularMovies);
-        //this.props.searchMovies(event.target.value.toLowerCase());
-        let filteredArray = this.props.popularMovies.filter((movie) => {
-           if (movie.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1) {
-               console.log("found", movie.title);
-               return movie;
-           }
-        });
-        console.log("filteredArray", filteredArray);
-
+        this.props.searchMovies(event.target.value);
     }
 
     render(){
