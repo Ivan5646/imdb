@@ -10,16 +10,6 @@
 
 
 // Steps.
-// - CSS layout. What to use? Bootstrap?
-// Bootsrtpap dependencies 
-// +-- UNMET PEER DEPENDENCY jquery@1.9.1 - 3
-// `-- UNMET PEER DEPENDENCY popper.js@^1.14.3
-
-@import "~bootstrap/dist/css/bootstrap-grid";
-.movies {
-    @include make-container() // error
-    .container // error
-}
 
 // Start page.
 // 1) cards for popular movies
@@ -37,8 +27,35 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 // - Search field to filter movies
 // поле для поиска. Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит.
+// have get the initial state when user deletes search strnig in the search upnut
+componentWillMount() { 
+    save here initial state
+    console.log("componentWillMount, this.props.popularMovies", this.props.popularMovies);
+    inititalState(this.props.popularMovies); // empty array
+}
+// how to call a method inside same react component?
+
+// how to set initial state in reducer off the fetch result?
+https://github.com/redux-loop/redux-loop/issues/55
 
 
+// make a copy of movies in reducer
+// undefined though fine in state (in console redux-logger)
+
+// coding if conditions in reducer is giving syntax errors
+
+//
+function filterMovies(moviesToFilter, searchString){
+    moviesToFilter.filter((movie) => {
+        if (movie.title.toLowerCase().search(searchString.toLowerCase()) !== -1) {
+            //console.log("filter, state.unfiltered", state.unfiltered);
+            console.log("found", movie.title);
+            return movie;
+        }
+    })
+}
+
+ allMovies: filterMovies(state.allMovies, action.searchString), // allMovies are undefined, though movies are found
 
 // Things to do.
 // Fix arrow functions error.

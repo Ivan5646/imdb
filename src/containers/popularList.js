@@ -19,15 +19,19 @@ class PopularList extends React.Component {
 
     componentDidMount(){
         this.props.fetchPopulars();
+        //this.setState = ({unfilteredMovies: this.props.fetchPopulars()});
     }
 
     loadMore() {
         this.setState = ({ page: this.state.page += 1 });
+        //this.setState = ({ unfilteredMovies: this.state.unfilteredMovies.concat(this.props.fetchPopulars(this.state.page)) });
         this.props.fetchPopulars(this.state.page);
         console.log("this.state", this.state);
     }
 
     filterMovies(event) {
+        console.log("search string", event.target.value);
+        console.log("event.target.value === empty ", event.target.value === "");
         this.props.searchMovies(event.target.value);
     }
 
