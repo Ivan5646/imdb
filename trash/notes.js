@@ -26,6 +26,12 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // - Search field to filter movies
+// options
+// 1) filter in component, in render() display either state with filtered movies, either props.popularMovies from the store. 
+this.setState = ({ emptySearch: event.target.value === "" ? false : true }); // this.state undefined
+this.setState({ emptySearch: searchValue }); // works, correct syntax
+// html is not rerendered depending on this.emptySearch true or false (just a class var), rendereing has to be depended on a state but state property is failing to change... example above
+
 // поле для поиска. Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит.
 // have get the initial state when user deletes search strnig in the search upnut
 componentWillMount() { 
@@ -62,6 +68,10 @@ function filterMovies(moviesToFilter, searchString){
 // https://stackoverflow.com/questions/42063854/arrow-function-syntax-not-working-with-webpack
 
 
+// Search examples
+// http://btholt.github.io/complete-intro-to-react/
+// library https://stackoverflow.com/questions/51182165/implementation-of-redux-search-with-components  https://github.com/bvaughn/redux-search  https://bvaughn.github.io/redux-search/
+// https://stackoverflow.com/questions/47784442/react-redux-search-filter-update-app-state-as-you-type
 
 
 // Done

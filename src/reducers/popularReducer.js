@@ -22,9 +22,10 @@ function filterMovies(moviesToFilter, searchString){
             //console.log("filter, state.unfiltered", state.unfiltered);
             console.log("found", movie.title);
             newMovieArray.push(movie);
-            return movie;
+            //return movie;
         }
     });
+    console.log("newMovieArray", newMovieArray);
     return newMovieArray;
 }
 
