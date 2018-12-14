@@ -7,8 +7,9 @@ const popularReducer = (state = {allMovies: []}, action) => {
         case 'SEARCH_MOVIES':
             return {
                 ... state,
-                allMovies: action.searchString === "" ? state.unfiltered : filterMovies(state.allMovies, action.searchString),
-                loading: false
+                filteredMovies: action.filteredMovies ? action.filteredMovies : "no filtered movies",
+                loading: false,
+                searchInput: action.searchInput
             };
         default:
             return state;

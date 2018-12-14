@@ -16,7 +16,7 @@ class PopularList extends React.Component {
             emptySearch: true
         };
         this.loadMore = this.loadMore.bind(this);
-        this.filterMovies = this.filterMovies.bind(this);
+        // this.filterMovies = this.filterMovies.bind(this);
         this.showMovies = this.showMovies.bind(this);
     }
 
@@ -30,20 +30,12 @@ class PopularList extends React.Component {
         this.props.fetchPopulars(this.state.page);
     }
 
-    filterMovies(event) {
-        let searchValue = event.target.value === "" ? true : false;
-        console.log("filterMovies, searchValue", searchValue);
-        this.setState({ emptySearch: searchValue });
-
-        //filter movies to render the array from the state
-        this.props.popularMovies.filter((movie) => {
-            if (movie.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1) {
-                console.log("found", movie.title);
-                this.state.filteredMovies.push(movie);
-                //return movie;
-            }
-        });
-    }
+    // filterMovies(event) {
+    //     let searchValue = event.target.value === "" ? true : false;
+    //     this.setState({ emptySearch: searchValue });
+    //
+    //     console.log("filterMovies, this.props.searchString", this.props.searchString);
+    // }
 
     showMovies() {
         // test update single state property
@@ -61,11 +53,10 @@ class PopularList extends React.Component {
     render(){
         if (this.props.popularMovies.length) {
             console.log("render, this.state", this.state);
-            if (this.state.emptySearch) {
+            if (!this.props.searchInput) {
                 return (
                     <section className={"movies"}>
                         <h4>{this.props.popularMovies.length}</h4>
-                        <input type="text" placeholder="Search" onChange={this.filterMovies}/>
                         <div className={"movies__block"}>
                             {
                                 this.props.popularMovies.map((movie) => {
@@ -82,16 +73,14 @@ class PopularList extends React.Component {
                     </section>
                 )
             } else {
-                console.log("else false this.emptySearch", this.emptySearch);
                 return (
                     <section className={"movies"}>
                         <div className={"movies__block"}>
                             <h2>Filtered</h2>
-                            <input type="text" placeholder="Search" onChange={this.filterMovies}/>
                             {
-                                this.state.filteredMovies.map((movie) => {
+                                this.props.filteredMovies.map((movie) => {
                                     return (
-                                        <div className={"movie-card"} key={movie.id + this.generateNum()}>
+                                        <div className={"movie-card"} key={this.generateNum()}>
                                             <div>{movie.title}</div>
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                         </div>
@@ -114,6 +103,8 @@ function mapStateToProps(state){
     if (state.popularMovies.allMovies) {
         return {
             popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
+            searchInput: state.search.searchInput,
+            filteredMovies: state.search.filteredMovies
         }
     } else {
         return {

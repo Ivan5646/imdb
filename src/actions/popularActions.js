@@ -22,9 +22,9 @@ export function fetchPopulars(page) {
     };
 }
 
-export const searchMovies = (searchString) => ({
+export const searchMovies = (filteredMovies,searchInput) => ({
     type: 'SEARCH_MOVIES',
-    searchString: searchString
+    filteredMovies: filteredMovies,
+    searchInput: searchInput
 });
-
 
