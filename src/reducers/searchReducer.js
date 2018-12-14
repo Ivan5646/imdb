@@ -1,7 +1,10 @@
 const popularReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'SEARCH':
-            return {searchString: action.searchString};
+        case 'SEARCH_MOVIES':
+            return {
+                filteredMovies: action.filteredMovies ? action.filteredMovies : "no filtered movies",
+                searchInput: action.searchInput
+            };
         default:
             return state;
     }

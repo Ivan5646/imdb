@@ -13,8 +13,6 @@ class Search extends React.Component {
 
     handleSearch(event) {
         console.log("handleSearch, event.target.value", event.target.value);
-        //let searchValue = event.target.value;
-        //this.props.search(searchValue);
 
         //filter movies to render the array from the state
         let filteredMovies = this.props.popularMovies.filter((movie) => {
@@ -27,7 +25,6 @@ class Search extends React.Component {
         let searchInput = event.target.value ? true : false;
         this.props.searchMovies(filteredMovies, searchInput);
         console.log("search component, filteredMovies", filteredMovies);
-        //console.log("this.props.filteredMovies", this.props.filteredMovies);
     }
 
     render() {

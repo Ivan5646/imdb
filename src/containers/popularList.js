@@ -11,37 +11,18 @@ class PopularList extends React.Component {
         this.dbLink = "https://image.tmdb.org/t/p/w400";
 
         this.state = {
-            page: 1,
-            filteredMovies: [],
-            emptySearch: true
+            page: 1
         };
         this.loadMore = this.loadMore.bind(this);
-        // this.filterMovies = this.filterMovies.bind(this);
-        this.showMovies = this.showMovies.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchPopulars();
-        //this.setState = ({unfilteredMovies: this.props.fetchPopulars()});
     }
 
     loadMore() {
         this.setState = ({ page: this.state.page += 1 }); // why is this syntax working then?
         this.props.fetchPopulars(this.state.page);
-    }
-
-    // filterMovies(event) {
-    //     let searchValue = event.target.value === "" ? true : false;
-    //     this.setState({ emptySearch: searchValue });
-    //
-    //     console.log("filterMovies, this.props.searchString", this.props.searchString);
-    // }
-
-    showMovies() {
-        // test update single state property
-        if (this.searchInput) {
-            
-        }
     }
 
     generateNum() {
@@ -52,7 +33,6 @@ class PopularList extends React.Component {
 
     render(){
         if (this.props.popularMovies.length) {
-            console.log("render, this.state", this.state);
             if (!this.props.searchInput) {
                 return (
                     <section className={"movies"}>
@@ -78,9 +58,9 @@ class PopularList extends React.Component {
                         <div className={"movies__block"}>
                             <h2>Filtered</h2>
                             {
-                                this.props.filteredMovies.map((movie) => {
+                                this.props.filteredMovies.map((movie, index) => {
                                     return (
-                                        <div className={"movie-card"} key={this.generateNum()}>
+                                        <div className={"movie-card"} key={index}>
                                             <div>{movie.title}</div>
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                         </div>
