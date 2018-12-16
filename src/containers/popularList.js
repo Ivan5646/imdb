@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import Waypoint from 'react-waypoint';
+import { Link } from 'react-router-dom'
 import { fetchPopulars, searchMovies } from "../actions/popularActions";
+import { Movie } from './movie'
 
 class PopularList extends React.Component {
 
@@ -41,10 +43,12 @@ class PopularList extends React.Component {
                             {
                                 this.props.popularMovies.map((movie) => {
                                     return (
-                                        <div className={"movie-card"} key={movie.id + this.generateNum()}>
-                                            <div>{movie.title}</div>
-                                            <img src={`${this.dbLink}${movie.poster_path}`}></img>
-                                        </div>
+                                        <Link to="/movie" component={Movie} key={movie.id}>
+                                            <div className={"movie-card"}>
+                                                <div>{movie.title}</div>
+                                                <img src={`${this.dbLink}${movie.poster_path}`}></img>
+                                            </div>
+                                        </Link>
                                     )
                                 })
                             }
@@ -97,4 +101,4 @@ function matchDispatchToProps(dispatch){
     return bindActionCreators({fetchPopulars: fetchPopulars, searchMovies: searchMovies}, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(PopularList); // this is now a contanier
+export default connect(mapStateToProps, matchDispatchToProps)(PopularList); // this is now a container
