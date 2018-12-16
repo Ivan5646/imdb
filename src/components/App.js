@@ -7,12 +7,12 @@ import Movie from '../containers/movie'
 
 const App = () => (
     <BrowserRouter>
-    <div>
-        <h3 className={"red"}>Popular Movies</h3>
-        <Search />
-        <Route exact path="/" component={PopularList} />
-        <Route path="/movie" component={Movie} />
-    </div>
+        <div>
+            <h3 className={"red"}>Popular Movies</h3>
+            <Search />
+            <Route exact path="/" component={PopularList} />
+            <Route path="/movie" component={Movie} />
+        </div>
     </BrowserRouter>
 );
 

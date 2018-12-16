@@ -1,7 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-
+    output: {
+        publicPath: '/'
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",  
@@ -22,7 +24,10 @@ module.exports = {
                 ]
               }
         ]
-    }
+    },
+    devServer: {
+        historyApiFallback: true,
+    },
 };
 
 

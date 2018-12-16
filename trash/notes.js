@@ -21,6 +21,19 @@
 
 
 // react-router 
+// example
+// app.js
+<Route path="/movie" component={Movie} />
+// popularList.js
+return (
+    <Link to="/movie" component={Movie} key={movie.id}>
+        <div className={"movie-card"}>
+            <div>{movie.title}</div>
+            <img src={`${this.dbLink}${movie.poster_path}`}></img>
+        </div>
+    </Link>
+)
+
 // should be using react-router-dom  https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
 //error
 const App = () => (
