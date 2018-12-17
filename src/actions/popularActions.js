@@ -43,7 +43,7 @@ export const fetchMovie = (movieId) => {
     console.log("fetchMovie action");
     return function (dispatch) {
         dispatch(requestMovie());
-        return fetch(`https://api.themoviedb.org/3/movie/297802?api_key=${apiKey}&language=en-US`)
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`)
             .then(
                 response => response.json(),
                 error => console.log('An error occurred.', error),

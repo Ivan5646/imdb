@@ -11,7 +11,7 @@ class Movie extends React.Component{
 
     componentDidMount(){
         console.log("movie componentDidMount");
-        fetchMovie(297802); // have to pass movie id
+        this.props.fetchMovie(297802); // have to pass movie id
     }
 
     render(){

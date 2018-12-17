@@ -16,7 +16,10 @@
 
 // Steps.
 
+// Search funcion is supposed to search in database not among the movies on the page
+
 // При клике на карточку с фильмом, должна быть показана страница с детальной информацией об этом фильме и списком рекоммендованых или похожих (можно и то, и то) фильмов к нему.
+
 
 
 
@@ -133,6 +136,11 @@ const store = createStore(
     reducer,
     applyMiddleware(logger)
 );
+
+
+// action is not fired 
+this.props.testMovieClick(); // because I should use instead
+testMovieClick();
 
 
 // Search examples
