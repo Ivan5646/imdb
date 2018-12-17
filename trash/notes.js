@@ -17,9 +17,26 @@
 // Steps.
 
 // При клике на карточку с фильмом, должна быть показана страница с детальной информацией об этом фильме и списком рекоммендованых или похожих (можно и то, и то) фильмов к нему.
-//
 
 
+
+
+
+
+
+// Things to do.
+// - Checks of this type below are unnecessary, remove?
+if (this.props.popularMovies.length) // in render()
+if (state.popularMovies.allMovies) // in mapStateToProps()
+
+// Fix arrow functions error.
+// https://stackoverflow.com/questions/42063854/arrow-function-syntax-not-working-with-webpack
+
+
+
+
+
+// Done
 // react-router 
 // example
 // app.js
@@ -35,52 +52,7 @@ return (
 )
 
 // should be using react-router-dom  https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
-//error
-const App = () => (
-    <BrowserRouter>
-        <Switch>
-            <h3 className={"red"}>Popular Movies</h3>
-            <Search/>
-            <Route exact path='/' component={PopularList}/>
-            <Route exact path='/movie' component={Movie}/>
-        </Switch>
-    </BrowserRouter>
-);
-// Uncaught Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
-// Check the render method of `App`.
 
-// Tried
-// 1) 
-// same error
-// npm i react-router-dom@next
-// in your App.js
-// import { BrowserRouter as Router, Route } from 'react-router-dom'
-// const Home = () => <h1>Home</h1>
-// const App = () =>(
-//   <Router>
-//     <Route path="/" component={Home} />
-//   </Router>
-// )
-// export default App;
-
-
-
-// Things to do.
-// - Checks of this type below are unnecessary, remove?
-if (this.props.popularMovies.length) // in render()
-if (state.popularMovies.allMovies) // in mapStateToProps()
-
-// Fix arrow functions error.
-// https://stackoverflow.com/questions/42063854/arrow-function-syntax-not-working-with-webpack
-
-
-// Search examples
-// http://btholt.github.io/complete-intro-to-react/
-// library https://stackoverflow.com/questions/51182165/implementation-of-redux-search-with-components  https://github.com/bvaughn/redux-search  https://bvaughn.github.io/redux-search/
-// https://stackoverflow.com/questions/47784442/react-redux-search-filter-update-app-state-as-you-type
-
-
-// Done
 // Start page.
 // 1) cards for popular movies. Done.
 
@@ -161,6 +133,13 @@ const store = createStore(
     reducer,
     applyMiddleware(logger)
 );
+
+
+// Search examples
+// http://btholt.github.io/complete-intro-to-react/
+// library https://stackoverflow.com/questions/51182165/implementation-of-redux-search-with-components  https://github.com/bvaughn/redux-search  https://bvaughn.github.io/redux-search/
+// https://stackoverflow.com/questions/47784442/react-redux-search-filter-update-app-state-as-you-type
+
 
 // Fetch data from api.
 // https://daveceddia.com/where-fetch-data-redux/

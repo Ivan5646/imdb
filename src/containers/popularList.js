@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import Waypoint from 'react-waypoint';
 import { Link } from 'react-router-dom'
-import { fetchPopulars, searchMovies } from "../actions/popularActions";
+import { fetchPopulars, searchMovies, getMovieId } from "../actions/popularActions";
 import { Movie } from './movie'
 
 class PopularList extends React.Component {
@@ -16,6 +16,7 @@ class PopularList extends React.Component {
             page: 1
         };
         this.loadMore = this.loadMore.bind(this);
+        this.getMovieId = this.getMovieId.bind(this);
     }
 
     componentDidMount(){
@@ -33,6 +34,11 @@ class PopularList extends React.Component {
         return uniqueNum;
     }
 
+    getMovieId(movieId) {
+        console.log(movieId);
+        getMovieId(movieId);
+    }
+
     render(){
         if (this.props.popularMovies.length) {
             if (!this.props.searchInput) {
@@ -43,7 +49,7 @@ class PopularList extends React.Component {
                             {
                                 this.props.popularMovies.map((movie) => {
                                     return (
-                                        <Link to="/movie" component={Movie} key={movie.id}>
+                                        <Link to="/movie" component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
                                             <div className={"movie-card"}>
                                                 <div>{movie.title}</div>
                                                 <img src={`${this.dbLink}${movie.poster_path}`}></img>
@@ -98,7 +104,7 @@ function mapStateToProps(state){
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({fetchPopulars: fetchPopulars, searchMovies: searchMovies}, dispatch)
+    return bindActionCreators({fetchPopulars: fetchPopulars, searchMovies: searchMovies, getMovieId: getMovieId}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PopularList); // this is now a container
