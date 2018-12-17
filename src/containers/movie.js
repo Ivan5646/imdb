@@ -10,8 +10,7 @@ class Movie extends React.Component{
     }
 
     componentDidMount(){
-        console.log("movie componentDidMount");
-        this.props.fetchMovie(297802); // have to pass movie id
+        this.props.fetchMovie(this.props.movieId);
     }
 
     render(){
@@ -23,7 +22,6 @@ class Movie extends React.Component{
 }
 
 function mapStateToProps(state){
-    console.log("movie state", state);
     return {
         movieId: state.movie.id
     };

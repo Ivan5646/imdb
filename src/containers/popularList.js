@@ -16,7 +16,6 @@ class PopularList extends React.Component {
             page: 1
         };
         this.loadMore = this.loadMore.bind(this);
-        this.getMovieId = this.getMovieId.bind(this);
     }
 
     componentDidMount(){
@@ -36,7 +35,7 @@ class PopularList extends React.Component {
 
     getMovieId(movieId) {
         console.log(movieId);
-        getMovieId(movieId);
+        this.props.getMovieId(movieId);
     }
 
     render(){
