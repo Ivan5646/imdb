@@ -60,3 +60,20 @@ export const getMovieId = (movieId) => ({
     movieId: movieId
 });
 
+export const receivedRecommendations = (result) => ({
+    type: 'RECEIVE_RECOMMENDATIONS',
+    result: result
+});
+
+export function fetchRecommendations(movieId) {
+    return function(dispatch) {
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apiKey}&language=en-US&page=1`)
+            .then(
+                response => response.json(),
+                error => console.log('An error occurred.', error),
+            )
+            .then(( data ) => {
+                dispatch(receivedRecommendations(data));
+            });
+    };
+}

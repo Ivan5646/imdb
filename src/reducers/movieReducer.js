@@ -6,6 +6,8 @@ const movieReducer = (state = {}, action) => {
             return {movie: action.result, loading: false};
         case 'GET_MOVIE_ID':
             return {...state, id: action.movieId};
+        case 'RECEIVE_RECOMMENDATIONS':
+            return {...state, recommendations: action.result.results};
         default:
             return state;
     }

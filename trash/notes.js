@@ -4,6 +4,8 @@
 
 // popular movies request 
 // https://api.themoviedb.org/3/movie/popular?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
+// recommendations
+// https://api.themoviedb.org/3/movie/338952/recommendations?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
 // api
 // https://www.themoviedb.org/settings/api
 
@@ -15,22 +17,23 @@
 
 
 // Steps.
-
-// Search funcion is supposed to search in database not among the movies on the page
+// Gоле для поиска. 
+// Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
+// Search function is supposed to search in database not among the movies on the page
 
 // При клике на карточку с фильмом, должна быть показана страница с детальной информацией об этом фильме и списком рекоммендованых или похожих (можно и то, и то) фильмов к нему.
-
-
-
-
+// 1) render info on movie page
+// 2) fetch and render reommended
+// 3) replace url with movie id
 
 
 
 
 // Things to do.
-// - Checks of this type below are unnecessary, remove?
+// - Checks of this type below are unnecessary, remove? How to handle error in render method property of props undefined though it exist in state?
 if (this.props.popularMovies.length) // in render()
 if (state.popularMovies.allMovies) // in mapStateToProps()
+// ?    https://stackoverflow.com/questions/40635804/why-are-my-props-undefined-when-using-redux-and-react-js
 
 // Fix arrow functions error.
 // https://stackoverflow.com/questions/42063854/arrow-function-syntax-not-working-with-webpack
@@ -68,6 +71,62 @@ return (
 // either use react comp either write one myself, js functionlaity in the video below
 // https://www.youtube.com/watch?v=eziREnZPml4   js fetch on scroll
 // Questions.
+// Any fetch from api.
+// this one returned no data, but general info: headers, status, etc 
+export function fetchRecommendations(movieId) {
+    return function(dispatch) {
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apiKey}&language=en-US&page=1`)
+            .then(( data ) => {
+                dispatch(receivedRecommendations(data));
+            });
+    };
+}
+// this one fetshed data
+export const receivedRecommendations = (result) => ({
+    type: 'RECEIVE_RECOMMENDATIONS',
+    result: result
+});
+
+export function fetchRecommendations(movieId) {
+    return function(dispatch) {
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apiKey}&language=en-US&page=1`)
+            .then(  // because it has function to handle error?
+                response => response.json(),
+                error => console.log('An error occurred.', error),
+            )
+            .then(( data ) => {
+                dispatch(receivedRecommendations(data));
+            });
+    };
+}
+
+
+//  https://blog.logrocket.com/data-fetching-in-redux-apps-a-100-correct-approach-4d26e21750fc
+
+// should I have loading flag always when I fetch something from api, and shuold I always have such structrue:
+export const requestPopualrs = () => ({
+    type: 'REQUEST_POPULAR',
+});
+export const receivedPopulars = (result) => ({
+    type: 'RECEIVE_POPULAR',
+    result: result,
+});
+export function fetchPopulars(page) {
+    return function (dispatch) { // what is dispatch?
+        dispatch(requestPopualrs());
+        return fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`)
+            .then(
+                response => response.json(),
+                error => console.log('An error occurred.', error),
+            )
+            .then((result) => {
+                    dispatch(receivedPopulars(result));
+                },
+            );
+    };
+}
+
+
 // how to pass a page number of the query? how to keep track of the counter? In the container's state.
 // A) Try with waypoint and my own reducer logics. Done!
 // ! https://medium.com/@k88lawrence/dead-simple-infinite-scroll-with-kaminari-and-react-waypoint-8073c22be7ed  the case with unlimitied data request
@@ -98,7 +157,7 @@ this.setState = ({ emptySearch: event.target.value === "" ? false : true }); // 
 this.setState({ emptySearch: searchValue }); // works, correct syntax
 // a) put input independently b) pass search string from input to filter function c) how can i make it rerender in popularList on change?
 
-// поле для поиска. Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит.
+// поле для поиска. Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
 // have get the initial state when user deletes search strnig in the search upnut
 componentWillMount() { 
     save here initial state
@@ -136,7 +195,6 @@ const store = createStore(
     reducer,
     applyMiddleware(logger)
 );
-
 
 // action is not fired 
 this.props.testMovieClick(); // because I should use instead
