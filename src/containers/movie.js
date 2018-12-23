@@ -15,7 +15,6 @@ class Movie extends React.Component{
     }
 
     render(){
-        console.log("movie this.props", this.props);
         if (this.props.movie.movie && this.props.recommendations) {
             return (
                 <section>

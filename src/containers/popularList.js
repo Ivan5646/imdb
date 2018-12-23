@@ -43,6 +43,7 @@ class PopularList extends React.Component {
             if (!this.props.searchInput) {
                 return (
                     <section className={"movies"}>
+                        <h3>Popular Movies</h3>
                         <h4>{this.props.popularMovies.length}</h4>
                         <div className={"movies__block"}>
                             {

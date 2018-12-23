@@ -24,9 +24,12 @@
 // При клике на карточку с фильмом, должна быть показана страница с детальной информацией об этом фильме и списком рекоммендованых или похожих (можно и то, и то) фильмов к нему.
 // 1) render info on movie page
 // 2) fetch and render reommended
-// 3) replace url with movie id
-
-
+// 3) replace url with movie id, have to pass movieId from redux store here, in App.js, feels like it not right to conect App.js to redux?
+<Route path="/movie" component={Movie} />
+//... no movie.id in redux store when mapping state to props in main container. After RECEIVE_MOVIE action it vanishes - the state is rewritten. property disappears after another action
+// Another oprion is to take if from movie object that was fetched from API and which is in store - can't get it into props though...
+// if set state.movie.movie.id in mapStateToProps - it is undefined.  Main component is not being rendered, movie component is redered instead at that point  
+// state in Main comp becomes available after Movie comp is rendered.
 
 
 // Things to do.
@@ -58,6 +61,7 @@ return (
 )
 
 // should be using react-router-dom  https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
+// https://scotch.io/courses/using-react-router-4/route-params 04:30. passing path parameter, also using axios.get in ComponentDidMount...
 
 // Start page.
 // 1) cards for popular movies. Done.
