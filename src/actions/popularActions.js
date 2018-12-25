@@ -77,3 +77,8 @@ export function fetchRecommendations(movieId) {
             });
     };
 }
+
+export const addToFavourites = (movie) => ({
+    type: 'ADD_TO_FAVOURITES',
+    movie: movie
+});

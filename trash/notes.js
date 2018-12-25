@@ -17,11 +17,13 @@
 
 
 // Steps.
-// Gоле для поиска. 
+//  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
+
+// Поле для поиска. 
 // Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
 // Search function is supposed to search in database not among the movies on the page
 
-// Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there
+// Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
 
 
 

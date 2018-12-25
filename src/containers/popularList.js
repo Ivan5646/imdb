@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import Waypoint from 'react-waypoint';
 import { Link } from 'react-router-dom'
-import { fetchPopulars, searchMovies, getMovieId } from "../actions/popularActions";
+import { fetchPopulars, searchMovies, getMovieId, addToFavourites } from "../actions/popularActions";
 import { Movie } from './movie'
 
 class PopularList extends React.Component {
@@ -38,6 +38,10 @@ class PopularList extends React.Component {
         this.props.getMovieId(movieId);
     }
 
+    addToFavourites(movie) {
+        this.props.addToFavourites(movie);
+    }
+
     render(){
         if (this.props.popularMovies.length) {
             console.log("popularList this.props", this.props);
@@ -50,12 +54,15 @@ class PopularList extends React.Component {
                             {
                                 this.props.popularMovies.map((movie) => {
                                     return (
-                                        <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
-                                            <div className={"movie-card"}>
-                                                <div>{movie.title}</div>
-                                                <img src={`${this.dbLink}${movie.poster_path}`}></img>
-                                            </div>
-                                        </Link>
+                                        <div>
+                                            <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
+                                                <div className={"movie-card"}>
+                                                    <div>{movie.title}</div>
+                                                    <img src={`${this.dbLink}${movie.poster_path}`}></img>
+                                                </div>
+                                            </Link>
+                                            <button onClick={() => {this.addToFavourites(movie.id)}}>Add to Favourites</button>
+                                        </div>
                                     )
                                 })
                             }
@@ -105,7 +112,12 @@ function mapStateToProps(state){
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({fetchPopulars: fetchPopulars, searchMovies: searchMovies, getMovieId: getMovieId}, dispatch)
+    return bindActionCreators({
+        fetchPopulars: fetchPopulars,
+        searchMovies: searchMovies,
+        getMovieId: getMovieId,
+        addToFavourites: addToFavourites
+    }, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PopularList); // this is now a container
