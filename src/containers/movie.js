@@ -12,6 +12,7 @@ class Movie extends React.Component{
     componentDidMount(){
         this.props.fetchMovie(this.props.movieId);
         this.props.fetchRecommendations(this.props.movieId);
+        //const { handle } = this.props.match.params
     }
 
     render(){
@@ -34,7 +35,7 @@ class Movie extends React.Component{
             )
         } else {
             return (
-                <p>Loading...</p>
+                <p>Loading movie...</p>
             )
         }
     }

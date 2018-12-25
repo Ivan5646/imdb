@@ -40,6 +40,7 @@ class PopularList extends React.Component {
 
     render(){
         if (this.props.popularMovies.length) {
+            console.log("popularList this.props", this.props);
             if (!this.props.searchInput) {
                 return (
                     <section className={"movies"}>
@@ -49,7 +50,7 @@ class PopularList extends React.Component {
                             {
                                 this.props.popularMovies.map((movie) => {
                                     return (
-                                        <Link to="/movie" component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
+                                        <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
                                             <div className={"movie-card"}>
                                                 <div>{movie.title}</div>
                                                 <img src={`${this.dbLink}${movie.poster_path}`}></img>

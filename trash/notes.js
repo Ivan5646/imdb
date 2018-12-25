@@ -21,15 +21,10 @@
 // Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
 // Search function is supposed to search in database not among the movies on the page
 
-// При клике на карточку с фильмом, должна быть показана страница с детальной информацией об этом фильме и списком рекоммендованых или похожих (можно и то, и то) фильмов к нему.
-// 1) render info on movie page
-// 2) fetch and render reommended
-// 3) replace url with movie id, have to pass movieId from redux store here, in App.js, feels like it not right to conect App.js to redux?
-<Route path="/movie" component={Movie} />
-//... no movie.id in redux store when mapping state to props in main container. After RECEIVE_MOVIE action it vanishes - the state is rewritten. property disappears after another action
-// Another oprion is to take if from movie object that was fetched from API and which is in store - can't get it into props though...
-// if set state.movie.movie.id in mapStateToProps - it is undefined.  Main component is not being rendered, movie component is redered instead at that point  
-// state in Main comp becomes available after Movie comp is rendered.
+// Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there
+
+
+
 
 
 // Things to do.
@@ -46,6 +41,12 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // Done
+// При клике на карточку с фильмом, должна быть показана страница с детальной информацией об этом фильме и списком рекоммендованых или похожих (можно и то, и то) фильмов к нему.
+// 1) render info on movie page
+// 2) fetch and render reommended
+// 3) replace url with movie id, have to pass movieId from redux store here, in App.js, feels like it not right to conect App.js to redux?
+// in main.js  <Route path= this.props.movieId  seems to have the same value as movie.id in PopularList but Movie com is not rendered  
+
 // react-router 
 // example
 // app.js

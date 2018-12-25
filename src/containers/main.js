@@ -10,10 +10,14 @@ class Main extends React.Component {
         super(props);
     }
 
+    getMovieId() {
+
+    }
+
     render() {
-        console.log("main test");
+        console.log("main this.props", this.props);
         if (this.props.movieId) {
-            console.log("main this.props", this.props); // nothing here, though exists in state
+            console.log("main this.props.movieId", this.props.movieId); // nothing here, though exists in state
         } else {
             console.log("main this.props, no property");
         }
@@ -21,18 +25,17 @@ class Main extends React.Component {
             <BrowserRouter>
                 <div>
                     <Route exact path="/" component={PopularList} />
-                    <Route path="/movie" component={Movie} />
+                    <Route path="/:handle" component={Movie} />
                 </div>
             </BrowserRouter>
         )
     }
 }
 function mapStateToProps(state){
-    console.log("main state.movie.movie", state.movie.movie);
     if (state.movie.movie) {
-        movieId: state.movie.movie.adult
+        return {movieId: state.movie.movie.id}
     } else {
-        movieId: "no id"
+        return {movieId: "no id"}
     }
 }
 
