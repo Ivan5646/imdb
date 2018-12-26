@@ -24,8 +24,10 @@ render(
 );
 
 store.subscribe(() => {
-    saveState(store.getState());
+    saveState({
+        favourites: store.getState().favourites
+    });
 });
 
-const myStore = store.getState();
-console.log("myStore", myStore.favourites);
+// const myStore = store.getState();
+// console.log("myStore", myStore);

@@ -19,7 +19,11 @@
 // Steps.
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
 // done - remove from fav
+// - check for doubles
 // - persisit to LS
+// a) clear the rest of reducers... and pass them empty
+// failing at reducers when they retrieve data from LS, because objects does not have properties to which concatenate to (ex in popularREducer and favouritesReduser)
+// b) 
 // - enable to go to a movie from fav
 
 // Поле для поиска. 
