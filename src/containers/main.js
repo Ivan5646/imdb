@@ -16,12 +16,6 @@ class Main extends React.Component {
     }
 
     render() {
-        console.log("main this.props", this.props);
-        if (this.props.movieId) {
-            console.log("main this.props.movieId", this.props.movieId); // nothing here, though exists in state
-        } else {
-            console.log("main this.props, no property");
-        }
         return (
             <BrowserRouter>
                 <div>

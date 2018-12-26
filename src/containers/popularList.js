@@ -50,6 +50,9 @@ class PopularList extends React.Component {
                     <section className={"movies"}>
                         <h3>Popular Movies</h3>
                         <h4>{this.props.popularMovies.length}</h4>
+                        <Link to="/favourites">
+                            <div>Favourites</div>
+                        </Link>
                         <div className={"movies__block"}>
                             {
                                 this.props.popularMovies.map((movie) => {
@@ -61,7 +64,13 @@ class PopularList extends React.Component {
                                                     <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                                 </div>
                                             </Link>
-                                            <button onClick={() => {this.addToFavourites(movie.id)}}>Add to Favourites</button>
+                                            <button onClick={() => {this.addToFavourites({
+                                                id: movie.id,
+                                                title: movie.title,
+                                                img: `${this.dbLink}${movie.poster_path}`
+                                            })}}>
+                                                Add to Favourites
+                                            </button>
                                         </div>
                                     )
                                 })

@@ -8,7 +8,7 @@ const allReducers = combineReducers({ // that will be thrown to the Store
     popularMovies: popularReducer,
     search: searchReducer,
     movie: movieReducer,
-    favouritesReducer: favouritesReducer
+    favourites: favouritesReducer
 });
 
 export default allReducers;

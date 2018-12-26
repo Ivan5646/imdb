@@ -28,6 +28,10 @@
 
 
 
+// Routing
+// so when I get to any route redux store is reseted? It does so with /favourites/
+
+
 
 // Things to do.
 // - Checks of this type below are unnecessary, remove? How to handle error in render method property of props undefined though it exist in state?
