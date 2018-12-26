@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from "redux";
 import { Link } from 'react-router-dom';
-import {getMovieId} from "../actions/popularActions";
+import { getMovieId, removeFromFavourites} from "../actions/popularActions";
 import { Movie } from "./Movie"
 
 class Favourites extends React.Component {
@@ -15,15 +15,19 @@ class Favourites extends React.Component {
         this.props.getMovieId(movieId);
     }
 
+    removeFromFavourites(movieId) {
+        this.props.removeFromFavourites(movieId);
+    }
+
     render() {
         console.log("favourites this.props", this.props);
-        if (this.props.favourites.favourites.length) {
+        if (this.props.favourites.length) {
             return (
                 <div>
                     <h3>Favourites</h3>
                     <div className={"movies__block"}>
                         {
-                            this.props.favourites.favourites.map((movie) => {
+                            this.props.favourites.map((movie) => {
                                 return (
                                     <div>
                                         <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
@@ -32,6 +36,7 @@ class Favourites extends React.Component {
                                                 <img src={movie.img}></img>
                                             </div>
                                         </Link>
+                                        <button onClick={() => {this.removeFromFavourites(movie.id)}}>Remove from favourites</button>
                                     </div>
                                 )
                             })
@@ -41,7 +46,7 @@ class Favourites extends React.Component {
             )
         } else {
             return (
-                <div>loading favourties...</div>
+                <div>Loading favourties...</div>
             )
         }
 
@@ -50,12 +55,12 @@ class Favourites extends React.Component {
 
 function mapStateToProps(state){
     return {
-        favourites: state.favourites
+        favourites: state.favourites.favourites
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({getMovieId: getMovieId}, dispatch)
+    return bindActionCreators({getMovieId: getMovieId, removeFromFavourites: removeFromFavourites}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Favourites);
