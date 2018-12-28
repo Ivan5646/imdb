@@ -19,11 +19,70 @@
 // Steps.
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
 // done - remove from fav
+// done - persisit to LS
 // - check for doubles
-// - persisit to LS
-// a) clear the rest of reducers... and pass them empty
-// failing at reducers when they retrieve data from LS, because objects does not have properties to which concatenate to (ex in popularREducer and favouritesReduser)
-// b) 
+// favoutitesReucer problem. Tried
+// a) for loop with switch case or if else - returns undefined
+function checkDouble(array, itemToCheck) {
+    for (let i=0; i < array.length; i++) {
+        switch (array[i].id === itemToCheck.id) {
+            case true:
+                return console.log("double");
+            case false:
+                return itemToCheck;
+        }
+        // if  (array[i].id === itemToCheck.id) {
+        //     break;
+        // } else {
+        //     return itemToCheck;
+        // }
+    }
+}
+// b) map retuns undefined too
+function checkDouble(array, itemToCheck) {
+    array.map((movie) => {
+        if (movie.id === itemToCheck.id) {
+            console.log("double");
+        } else {
+            return itemToCheck;
+        }
+    })
+}
+// c) using function to write straight to reducer's favourites returns undefined no clue why
+function checkDouble (state, itemToCheck) {
+    if (state.length) {
+        state.find((movie) => {
+            if (movie.id === itemToCheck.id) {
+                console.log("double");
+                return state;
+            } else {
+                console.log("else of find"); // second action results in only undefined in array
+                return state.concat(itemToCheck);
+            }
+        });
+    } else {
+        console.log("no length");
+        return state.concat(itemToCheck);
+    }
+}
+// Solved with for loop...
+function checkDouble (state, itemToCheck) {
+    if (state.length) {
+        for (let i=0; i < state.length; i++) {
+            if  (state[i].id === itemToCheck.id) {
+                console.log("double");
+                return state;
+            } else {
+                return state.concat(itemToCheck);
+            }
+        }
+
+    } else {
+        console.log("no length");
+        return state.concat(itemToCheck);
+    }
+}
+
 // - enable to go to a movie from fav
 
 // Поле для поиска. 
