@@ -5,6 +5,7 @@ import Waypoint from 'react-waypoint';
 import { Link } from 'react-router-dom'
 import { fetchPopulars, searchMovies, getMovieId, addToFavourites } from "../actions/popularActions";
 import { Movie } from './movie'
+import { DoubleNotification } from '../components/doubleNotification'
 
 class PopularList extends React.Component {
 
@@ -71,6 +72,7 @@ class PopularList extends React.Component {
                                             })}}>
                                                 Add to Favourites
                                             </button>
+                                            <DoubleNotification double={this.props.double}></DoubleNotification>
                                         </div>
                                     )
                                 })
@@ -107,11 +109,13 @@ class PopularList extends React.Component {
 }
 
 function mapStateToProps(state){
+    console.log("popularList state", state);
     if (state.popularMovies.allMovies) {
         return {
             popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
             searchInput: state.search.searchInput,
-            filteredMovies: state.search.filteredMovies
+            filteredMovies: state.search.filteredMovies,
+            double: state.favourites.favourites.double
         }
     } else {
         return {

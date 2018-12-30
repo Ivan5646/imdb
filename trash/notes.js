@@ -20,6 +20,39 @@
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
 // done - remove from fav
 // done - persisit to LS
+// done - check for doubles, 
+// - notificate user when movie is already in fav 
+// trouble setting poprs in popuparList from redux store  
+// - enable to go to a movie from fav
+
+// Поле для поиска. 
+// Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
+// Search function is supposed to search in database not among the movies on the page
+
+// Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
+
+
+
+
+// Routing
+// so when I get to any route redux store is resetted? It does so with /favourites.
+
+
+
+// Things to do.
+// - Checks of this type below are unnecessary, remove? How to handle error in render method property of props undefined though it exist in state?
+if (this.props.popularMovies.length) // in render()
+if (state.popularMovies.allMovies) // in mapStateToProps()
+// ?    https://stackoverflow.com/questions/40635804/why-are-my-props-undefined-when-using-redux-and-react-js
+
+// Fix arrow functions error.
+// https://stackoverflow.com/questions/42063854/arrow-function-syntax-not-working-with-webpack
+
+
+
+
+
+// Done
 // - check for doubles
 // favoutitesReucer problem. Tried
 // a) for loop with switch case or if else - returns undefined
@@ -65,54 +98,23 @@ function checkDouble (state, itemToCheck) {
         return state.concat(itemToCheck);
     }
 }
-// Solved with for loop...
+// Solved
 function checkDouble (state, itemToCheck) {
     if (state.length) {
-        for (let i=0; i < state.length; i++) {
-            if  (state[i].id === itemToCheck.id) {
-                console.log("double");
-                return state;
-            } else {
-                return state.concat(itemToCheck);
-            }
-        }
-
+       const filteredArray = state.filter((movie) => {
+            return movie.id === itemToCheck.id
+        });
+       if (filteredArray == false || filteredArray.length === 0) {
+           return state.concat(itemToCheck);
+       } else {
+           return state.concat([]);
+       }
     } else {
         console.log("no length");
         return state.concat(itemToCheck);
     }
 }
 
-// - enable to go to a movie from fav
-
-// Поле для поиска. 
-// Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
-// Search function is supposed to search in database not among the movies on the page
-
-// Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
-
-
-
-
-// Routing
-// so when I get to any route redux store is resetted? It does so with /favourites.
-
-
-
-// Things to do.
-// - Checks of this type below are unnecessary, remove? How to handle error in render method property of props undefined though it exist in state?
-if (this.props.popularMovies.length) // in render()
-if (state.popularMovies.allMovies) // in mapStateToProps()
-// ?    https://stackoverflow.com/questions/40635804/why-are-my-props-undefined-when-using-redux-and-react-js
-
-// Fix arrow functions error.
-// https://stackoverflow.com/questions/42063854/arrow-function-syntax-not-working-with-webpack
-
-
-
-
-
-// Done
 // При клике на карточку с фильмом, должна быть показана страница с детальной информацией об этом фильме и списком рекоммендованых или похожих (можно и то, и то) фильмов к нему.
 // 1) render info on movie page
 // 2) fetch and render reommended
