@@ -72,7 +72,12 @@ class PopularList extends React.Component {
                                             })}}>
                                                 Add to Favourites
                                             </button>
-                                            <DoubleNotification double={this.props.double}></DoubleNotification>
+                                            <DoubleNotification double={
+                                                 this.props.favourites.find((fav) => {return fav.title === movie.title})
+                                            }
+                                            text={"test text"}
+                                            >
+                                            </DoubleNotification>
                                         </div>
                                     )
                                 })
@@ -110,18 +115,14 @@ class PopularList extends React.Component {
 
 function mapStateToProps(state){
     console.log("popularList state", state);
-    if (state.popularMovies.allMovies) {
         return {
             popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
             searchInput: state.search.searchInput,
             filteredMovies: state.search.filteredMovies,
-            double: state.favourites.favourites.double
+            double: state.favourites.favourites.double,
+            favourites: state.favourites.favourites
         }
-    } else {
-        return {
-            popularMovies: state
-        }
-    }
+
 }
 
 function matchDispatchToProps(dispatch){

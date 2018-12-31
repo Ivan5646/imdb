@@ -21,8 +21,9 @@
 // done - remove from fav
 // done - persisit to LS
 // done - check for doubles, 
-// - notificate user when movie is already in fav 
-// trouble setting poprs in popuparList from redux store  
+// - notificate user when movie is already in fav
+// trouble setting props in popuparList from redux store  
+// have to set flag for double flag each movie
 // - enable to go to a movie from fav
 
 // Поле для поиска. 
