@@ -18,13 +18,14 @@
 
 // Steps.
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
-// done - remove from fav
-// done - persisit to LS
-// done - check for doubles, 
-// - notificate user when movie is already in fav
-// trouble setting props in popuparList from redux store  
-// have to set flag for double flag each movie
-// - enable to go to a movie from fav
+// done - Remove from fav
+// done - Persisit to LS
+// done - Check for doubles, 
+// - Notificate user when movie is already in fav
+// show hide notification. Have to show notification onCLik for a specific movie, how?
+// - Show that a movie is in favs on movie page (Compulsory)
+// - Be able to add movie to favs from movie page? 
+// - Enable to go to a movie from fav
 
 // Поле для поиска. 
 // Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 

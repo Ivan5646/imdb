@@ -6,14 +6,12 @@ export class DoubleNotification extends React.Component {
             return (
                 <div>
                     <div>This movie is already in favourites</div>
-                    <div>{this.props.text}</div>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <div>Added to favourites</div>
-                    <div>{this.props.text}</div>
+                    <div>not in favs</div>
                 </div>
             )
         }

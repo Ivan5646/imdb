@@ -35,7 +35,6 @@ class PopularList extends React.Component {
     }
 
     getMovieId(movieId) {
-        console.log(movieId);
         this.props.getMovieId(movieId);
     }
 
@@ -45,7 +44,6 @@ class PopularList extends React.Component {
 
     render(){
         if (this.props.popularMovies.length) {
-            console.log("popularList this.props", this.props);
             if (!this.props.searchInput) {
                 return (
                     <section className={"movies"}>
@@ -75,7 +73,6 @@ class PopularList extends React.Component {
                                             <DoubleNotification double={
                                                  this.props.favourites.find((fav) => {return fav.title === movie.title})
                                             }
-                                            text={"test text"}
                                             >
                                             </DoubleNotification>
                                         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import { fetchMovie, fetchRecommendations } from '../actions/popularActions';
+import { DoubleNotification } from '../components/doubleNotification'
 
 class Movie extends React.Component{
 
@@ -23,11 +24,17 @@ class Movie extends React.Component{
                     <div>Overview: {this.props.movie.movie.overview}</div>
                     <div>Release date: {this.props.movie.movie.release_date}</div>
                     <div>Budget: {this.props.movie.movie.budget}</div>
+                    <DoubleNotification double={
+                        this.props.favourites.find((fav) => {return fav.title === this.props.movie.movie.title})
+                    }>
+                    </DoubleNotification>
                     <h4>Recommendations</h4>
                     <div>{
                         this.props.recommendations.map((movie) => {
                             return (
-                                <div key={movie.id}>{movie.title}</div>
+                                <div>
+                                    <div key={movie.id}>{movie.title}</div>
+                                </div>
                             )
                         })
                     }</div>
@@ -45,7 +52,8 @@ function mapStateToProps(state){
     return {
         movieId: state.movie.id,
         movie: state.movie,
-        recommendations: state.movie.recommendations
+        recommendations: state.movie.recommendations,
+        favourites: state.favourites.favourites
     };
 }
 
