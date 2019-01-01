@@ -12,7 +12,7 @@ class Search extends React.Component {
     }
 
     handleSearch(event) {
-        console.log("handleSearch, event.target.value", event.target.value);
+        //console.log("handleSearch, event.target.value", event.target.value);
 
         //filter movies to render the array from the state
         let filteredMovies = this.props.popularMovies.filter((movie) => {

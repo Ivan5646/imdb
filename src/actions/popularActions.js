@@ -40,7 +40,6 @@ export const receivedMovie = (result) => ({
 });
 
 export const fetchMovie = (movieId) => {
-    console.log("fetchMovie action");
     return function (dispatch) {
         dispatch(requestMovie());
         return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`)
@@ -87,3 +86,27 @@ export const removeFromFavourites = (movieId) => ({
     type: 'REMOVE_FROM_FAVOURITES',
     movieId: movieId
 });
+
+export const requestDB = () => ({
+    type: 'REQUEST_DB',
+});
+
+export const receivedDB = (result) => ({
+    type: 'RECEIVE_DB',
+    result: result,
+});
+
+export const fetchDB = (query) => {
+    return function (dispatch) {
+        dispatch(requestDB());
+        return fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&language=en-US&api_key=${apiKey}&query=${query}`)
+            .then(
+                response => response.json(),
+                error => console.log('An error occurred.', error),
+            )
+            .then((result) => {
+                    dispatch(receivedDB(result));
+                },
+            );
+    }
+};

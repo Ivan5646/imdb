@@ -23,11 +23,11 @@
 // done - Check for doubles, 
 // - Notificate user when movie is already in fav
 // show hide notification. Have to show notification onCLik for a specific movie, how?
-// - Show that a movie is in favs on movie page (Compulsory)
+// done - Show that a movie is in favs on movie page (Compulsory)
 // - Be able to add movie to favs from movie page? 
-// - Enable to go to a movie from fav
+// - Enable to go to a movie from fav 
 
-// Поле для поиска. 
+// Поле для поиска. !-1
 // Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
 // Search function is supposed to search in database not among the movies on the page
 
