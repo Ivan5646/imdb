@@ -44,7 +44,7 @@ class PopularList extends React.Component {
 
     render(){
         if (this.props.popularMovies.length) {
-            if (!this.props.searchInput) {
+            if (!this.props.searchResults) {
                 return (
                     <section className={"movies"}>
                         <h3>Popular Movies</h3>
@@ -84,23 +84,25 @@ class PopularList extends React.Component {
                     </section>
                 )
             } else {
-                return (
-                    <section className={"movies"}>
-                        <div className={"movies__block"}>
-                            <h2>Filtered</h2>
-                            {
-                                this.props.filteredMovies.map((movie, index) => {
-                                    return (
-                                        <div className={"movie-card"} key={index}>
-                                            <div>{movie.title}</div>
-                                            <img src={`${this.dbLink}${movie.poster_path}`}></img>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </section>
-                )
+                console.log("popularList props", this.props);
+                if (this.props.searchResults) {
+                    return (
+                        <section className={"movies"}>
+                            <div className={"movies__block"}>
+                                {
+                                    this.props.searchResults.map((movie, index) => {
+                                        return (
+                                            <div className={"movie-card"} key={index}>
+                                                <div>{movie.title}</div>
+                                                <img src={`${this.dbLink}${movie.poster_path}`}></img>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </section>
+                    )
+                }
             }
         } else {
             return (
@@ -116,8 +118,8 @@ function mapStateToProps(state){
             popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
             searchInput: state.search.searchInput,
             filteredMovies: state.search.filteredMovies,
-            double: state.favourites.favourites.double,
-            favourites: state.favourites.favourites
+            favourites: state.favourites.favourites,
+            searchResults: state.searchDbResults.searchResult
         }
 
 }

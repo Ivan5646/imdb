@@ -10,7 +10,7 @@ const allReducers = combineReducers({ // that will be thrown to the Store
     search: searchReducer,
     movie: movieReducer,
     favourites: favouritesReducer,
-    searchDb: searchDbReducer
+    searchDbResults: searchDbReducer
 });
 
 export default allReducers;
