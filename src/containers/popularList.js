@@ -116,8 +116,6 @@ function mapStateToProps(state){
     console.log("popularList state", state);
         return {
             popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
-            searchInput: state.search.searchInput,
-            filteredMovies: state.search.filteredMovies,
             favourites: state.favourites.favourites,
             searchResults: state.searchDbResults.searchResult
         }
