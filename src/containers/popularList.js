@@ -84,25 +84,38 @@ class PopularList extends React.Component {
                     </section>
                 )
             } else {
-                console.log("popularList props", this.props);
-                if (this.props.searchResults) {
-                    return (
-                        <section className={"movies"}>
-                            <div className={"movies__block"}>
-                                {
-                                    this.props.searchResults.map((movie, index) => {
-                                        return (
-                                            <div className={"movie-card"} key={index}>
-                                                <div>{movie.title}</div>
-                                                <img src={`${this.dbLink}${movie.poster_path}`}></img>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </section>
-                    )
-                }
+                return (
+                    <section className={"movies"}>
+                        <div className={"movies__block"}>
+                            {
+                                this.props.searchResults.map((movie, index) => {
+                                    return (
+                                        <div>
+                                            <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
+                                                <div className={"movie-card"} key={index}>
+                                                    <div>{movie.title}</div>
+                                                    <img src={`${this.dbLink}${movie.poster_path}`}></img>
+                                                </div>
+                                            </Link>
+                                            <button onClick={() => {this.addToFavourites({
+                                                id: movie.id,
+                                                title: movie.title,
+                                                img: `${this.dbLink}${movie.poster_path}`
+                                            })}}>
+                                                Add to Favourites
+                                            </button>
+                                            <DoubleNotification double={
+                                                this.props.favourites.find((fav) => {return fav.title === movie.title})
+                                            }
+                                            >
+                                            </DoubleNotification>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </section>
+                )
             }
         } else {
             return (

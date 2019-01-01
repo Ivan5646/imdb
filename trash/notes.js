@@ -6,6 +6,8 @@
 // https://api.themoviedb.org/3/movie/popular?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
 // recommendations
 // https://api.themoviedb.org/3/movie/338952/recommendations?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
+// search 
+// https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&language=en-US&api_key=45175df0f8d9c645fa9d232c3b5f2d41&query=aq
 // api
 // https://www.themoviedb.org/settings/api
 
@@ -29,7 +31,9 @@
 
 // Поле для поиска. !-1
 // Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
-// Search function is supposed to search in database not among the movies on the page
+// Done. Search function is supposed to search in database not among the movies on the page
+// Done. - Be able to go to a movie from search.
+// - Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит.
 
 // Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
 
