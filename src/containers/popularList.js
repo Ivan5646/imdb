@@ -121,6 +121,15 @@ class PopularList extends React.Component {
                                                     <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                                 </div>
                                             </Link>
+                                            <div className="genres">
+                                                {
+                                                    this.renderGenres(this.genresArray, movie.genre_ids).map(genre => {
+                                                        return (
+                                                            <div>{genre}</div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
                                             <button onClick={() => {this.addToFavourites({
                                                 id: movie.id,
                                                 title: movie.title,
