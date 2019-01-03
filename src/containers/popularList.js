@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import Waypoint from 'react-waypoint';
 import { Link } from 'react-router-dom'
-import { fetchPopulars, searchMovies, getMovieId, addToFavourites } from "../actions/popularActions";
+import { fetchPopulars, searchMovies, getMovieId, addToFavourites, fetchGenres } from "../actions/popularActions";
 import { Movie } from './movie'
 import { DoubleNotification } from '../components/doubleNotification'
 
@@ -12,6 +12,7 @@ class PopularList extends React.Component {
     constructor(props) {
         super(props);
         this.dbLink = "https://image.tmdb.org/t/p/w400";
+        this.genresArray = [{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":16,"name":"Animation"},{"id":35,"name":"Comedy"},{"id":80,"name":"Crime"},{"id":99,"name":"Documentary"},{"id":18,"name":"Drama"},{"id":10751,"name":"Family"},{"id":14,"name":"Fantasy"},{"id":36,"name":"History"},{"id":27,"name":"Horror"},{"id":10402,"name":"Music"},{"id":9648,"name":"Mystery"},{"id":10749,"name":"Romance"},{"id":878,"name":"Science Fiction"},{"id":10770,"name":"TV Movie"},{"id":53,"name":"Thriller"},{"id":10752,"name":"War"},{"id":37,"name":"Western"}];
 
         this.state = {
             page: 1
@@ -21,6 +22,7 @@ class PopularList extends React.Component {
 
     componentDidMount(){
         this.props.fetchPopulars();
+        this.props.fetchGenres();
     }
 
     loadMore() {
@@ -42,9 +44,22 @@ class PopularList extends React.Component {
         this.props.addToFavourites(movie);
     }
 
+    renderGenres(array1, array2) {
+        const genres = [];
+        array1.map((listGenre) => {
+            array2.find((popularGenre) => {
+                if (popularGenre === listGenre.id) {
+                    return genres.push(listGenre.name);
+                }
+            })
+        });
+        return genres;
+    }
+
     render(){
         if (this.props.popularMovies.length) {
             if (!this.props.searchResults) {
+                console.log("popular props", this.props);
                 return (
                     <section className={"movies"}>
                         <h3>Popular Movies</h3>
@@ -63,6 +78,15 @@ class PopularList extends React.Component {
                                                     <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                                 </div>
                                             </Link>
+                                            <div className="genres">
+                                                {
+                                                    this.renderGenres(this.genresArray, movie.genre_ids).map(genre => {
+                                                        return (
+                                                            <div>{genre}</div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
                                             <button onClick={() => {this.addToFavourites({
                                                 id: movie.id,
                                                 title: movie.title,
@@ -130,7 +154,8 @@ function mapStateToProps(state){
         return {
             popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
             favourites: state.favourites.favourites,
-            searchResults: state.searchDbResults.searchResult
+            searchResults: state.searchDbResults.searchResult,
+            genres: state.genres.id // id.genres
         }
 
 }
@@ -140,7 +165,8 @@ function matchDispatchToProps(dispatch){
         fetchPopulars: fetchPopulars,
         searchMovies: searchMovies,
         getMovieId: getMovieId,
-        addToFavourites: addToFavourites
+        addToFavourites: addToFavourites,
+        fetchGenres: fetchGenres
     }, dispatch)
 }
 

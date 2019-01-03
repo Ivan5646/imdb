@@ -110,3 +110,21 @@ export const fetchDB = (query) => {
             );
     }
 };
+
+export const receivedGenres = (result) => ({
+    type: 'RECEIVE_GENRES',
+    result: result
+});
+
+export function fetchGenres() {
+    return function(dispatch) {
+        return fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`)
+            .then(
+                response => response.json(),
+                error => console.log('An error occurred.', error),
+            )
+            .then(( data ) => {
+                dispatch(receivedGenres(data));
+            });
+    };
+}

@@ -8,6 +8,10 @@
 // https://api.themoviedb.org/3/movie/338952/recommendations?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
 // search 
 // https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&language=en-US&api_key=45175df0f8d9c645fa9d232c3b5f2d41&query=aq
+// genres
+// https://api.themoviedb.org/3/genre/movie/list?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US
+// popular
+// https://api.themoviedb.org/3/movie/popular?api_key=45175df0f8d9c645fa9d232c3b5f2d41&language=en-US&page=1
 // api
 // https://www.themoviedb.org/settings/api
 
@@ -19,6 +23,15 @@
 
 
 // Steps.
+// Поле для поиска. !-1
+// Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
+// Done. Search function is supposed to search in database not among the movies on the page
+// Done. - Be able to go to a movie from search.
+// - Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит. 
+movie.genres[0].name // undefined. Yeah because it is api of movie not popular movies
+genre_ids // popular movies properties
+
+
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
 // done - Remove from fav
 // done - Persisit to LS
@@ -29,18 +42,8 @@
 // - Be able to add movie to favs from movie page? 
 // - Enable to go to a movie from fav 
 
-// Поле для поиска. !-1
-// Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
-// Done. Search function is supposed to search in database not among the movies on the page
-// Done. - Be able to go to a movie from search.
-// - Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит.
-
-// Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
-
-
-
-
 // Routing
+// Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
 // so when I get to any route redux store is resetted? It does so with /favourites.
 
 
