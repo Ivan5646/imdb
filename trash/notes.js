@@ -23,15 +23,6 @@
 
 
 // Steps.
-// Поле для поиска. !-1
-// Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит(?). 
-// Done. Search function is supposed to search in database not among the movies on the page
-// Done. - Be able to go to a movie from search.
-// - Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит. 
-movie.genres[0].name // undefined. Yeah because it is api of movie not popular movies
-genre_ids // popular movies properties
-
-
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
 // done - Remove from fav
 // done - Persisit to LS
@@ -49,6 +40,15 @@ genre_ids // popular movies properties
 
 
 // Things to do.
+// Refactor render of popualList, make a component for repetetive code
+// need to pass to partial
+this.props.popularMovies
+this.props.searchResults
+this.dbLink ?
+this.genresArray ?
+
+// CSS markup
+
 // - Checks of this type below are unnecessary, remove? How to handle error in render method property of props undefined though it exist in state?
 if (this.props.popularMovies.length) // in render()
 if (state.popularMovies.allMovies) // in mapStateToProps()
@@ -62,6 +62,12 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // Done
+// Done. Поле для поиска. !-1
+// Done. Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит. 
+// Done. Search function is supposed to search in database not among the movies on the page
+// Done. - Be able to go to a movie from search.
+genre_ids // popular movies properties
+
 // - check for doubles
 // favoutitesReucer problem. Tried
 // a) for loop with switch case or if else - returns undefined
@@ -300,3 +306,14 @@ testMovieClick();
 // ex. 1  http://jsfiddle.net/cdagli/b2uq8704/6/  data in not coming to render() and first time state without posts, secons has the posts from api
 // ex. 2 https://medium.com/@lavitr01051977/basic-react-redux-app-with-async-call-to-api-e478e6e0c48b  https://github.com/Lavitr/ReduxAsyncActions
  if (this.props.posts) { ... } // resolved with this ckeck in render method of container 
+
+
+
+// when adding <DoubleNotification /> comp to popularMovie this.props.genres.genres become undefined
+// Solved by check if (this.props.genres) { ... }
+
+
+// Recurring propblems
+// export default connect - You likely forgot to export your component
+import PopularMovie from "./popularMovie"; // use this 
+of import {PopularMovie} from "./popularMovie"; // instead of this
