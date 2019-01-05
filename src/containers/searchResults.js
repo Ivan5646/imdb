@@ -8,7 +8,7 @@ import {addToFavourites, fetchGenres} from "../actions/popularActions";
 import { getMovieId } from "../actions/popularActions";
 
 
-class PopularMovie extends React.Component {
+class SearchResults extends React.Component {
     constructor(props) {
         super(props);
         this.dbLink = "https://image.tmdb.org/t/p/w400";
@@ -44,11 +44,11 @@ class PopularMovie extends React.Component {
             return (
                 <div className={"movies__block"}>
                     {
-                        this.props.popularMovies.map((movie) => {
+                        this.props.searchResults.map((movie, index) => {
                             return (
                                 <div>
                                     <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
-                                        <div className={"movie-card"}>
+                                        <div className={"movie-card"} key={index}>
                                             <div>{movie.title}</div>
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                         </div>
@@ -80,10 +80,6 @@ class PopularMovie extends React.Component {
                     }
                 </div>
             )
-        } else {
-            return (
-                <div>Loading...</div>
-            )
         }
 
     }
@@ -92,7 +88,7 @@ class PopularMovie extends React.Component {
 function mapStateToProps(state){
     return {
         genres: state.genres.id,
-        favourites: state.favourites.favourites
+        favourites: state.favourites.favourites,
     }
 }
 
@@ -104,4 +100,4 @@ function matchDispatchToProps(dispatch){
     }, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(PopularMovie);
+export default connect(mapStateToProps, matchDispatchToProps)(SearchResults);
