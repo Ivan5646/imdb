@@ -40,12 +40,10 @@
 
 
 // Things to do.
-// Refactor render of popualList, make a component for repetetive code
-// need to pass to partial
-this.props.popularMovies
-this.props.searchResults
-this.dbLink ?
-this.genresArray ?
+// Refactor render of popualList
+// created popularMovie and searchREsults components, has to make component for the repetetive code in them
+// not a stable work
+// 40 movies at the start instead of 20
 
 // CSS markup
 

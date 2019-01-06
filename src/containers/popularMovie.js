@@ -53,7 +53,7 @@ class PopularMovie extends React.Component {
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                         </div>
                                     </Link>
-                                    <div className="genres">
+                                    <div className="genres"> {/* make separate comp from here */}
                                         {
                                             this.renderGenres(this.props.genres.genres, movie.genre_ids).map(genre => {
                                                 return (
@@ -73,7 +73,7 @@ class PopularMovie extends React.Component {
                                         this.props.favourites.find((fav) => {return fav.title === movie.title})
                                     }
                                     >
-                                    </DoubleNotification>
+                                    </DoubleNotification>  {/* make separate comp to here */}
                                 </div>
                             )
                         })

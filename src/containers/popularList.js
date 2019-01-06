@@ -14,7 +14,7 @@ class PopularList extends React.Component {
         super(props);
 
         this.state = {
-            page: 1
+            page: 1,
         };
         this.loadMore = this.loadMore.bind(this);
     }
@@ -24,8 +24,10 @@ class PopularList extends React.Component {
     }
 
     loadMore() {
-        this.setState = ({ page: this.state.page += 1 }); // why is this syntax working then?
-        this.props.fetchPopulars(this.state.page);
+        this.setState = ({ page: this.state.page += 1 }); // wrong syntax?
+        if (this.state.page > 2) { // for some reason loadMore fires at the initial load, this will prevent it
+            this.props.fetchPopulars(this.state.page-1);
+        }
     }
 
     generateNum() {
@@ -35,7 +37,6 @@ class PopularList extends React.Component {
     }
 
     render(){
-        if (this.props.popularMovies.length) {
             if (!this.props.searchResults) {
                 console.log("popular props", this.props);
                 return (
@@ -56,11 +57,6 @@ class PopularList extends React.Component {
                     </section>
                 )
             }
-        } else {
-            return (
-                <p>No data</p>
-            )
-        }
     }
 }
 
