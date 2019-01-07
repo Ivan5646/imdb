@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
 import {Movie} from "./movie";
-import { DoubleNotification } from "../components/doubleNotification";
 import {addToFavourites, fetchGenres} from "../actions/popularActions";
 import { getMovieId } from "../actions/popularActions";
-
+import MovieBottom from "./movieBottom"
 
 class SearchResults extends React.Component {
     constructor(props) {
@@ -20,22 +19,6 @@ class SearchResults extends React.Component {
 
     getMovieId(movieId) {
         this.props.getMovieId(movieId);
-    }
-
-    addToFavourites(movie) {
-        this.props.addToFavourites(movie);
-    }
-
-    renderGenres(array1, array2) {
-        const genres = [];
-        array1.map((listGenre) => {
-            array2.find((popularGenre) => {
-                if (popularGenre === listGenre.id) {
-                    return genres.push(listGenre.name);
-                }
-            })
-        });
-        return genres;
     }
 
     render() {
@@ -53,27 +36,16 @@ class SearchResults extends React.Component {
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                         </div>
                                     </Link>
-                                    <div className="genres">
-                                        {
-                                            this.renderGenres(this.props.genres.genres, movie.genre_ids).map(genre => {
-                                                return (
-                                                    <div>{genre}</div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                    <button onClick={() => {this.addToFavourites({
-                                        id: movie.id,
-                                        title: movie.title,
-                                        img: `${this.dbLink}${movie.poster_path}`
-                                    })}}>
-                                        Add to Favourites
-                                    </button>
-                                    <DoubleNotification double={
-                                        this.props.favourites.find((fav) => {return fav.title === movie.title})
-                                    }
-                                    >
-                                    </DoubleNotification>
+                                    <MovieBottom
+                                        genres={this.props.genres.genres}
+                                        movieGenres={movie.genre_ids}
+                                        favourite={{
+                                            id: movie.id,
+                                            title: movie.title,
+                                            img: `${this.dbLink}${movie.poster_path}`
+                                        }}
+                                        movietTitle={movie.title}
+                                    />
                                 </div>
                             )
                         })

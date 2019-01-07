@@ -43,7 +43,7 @@
 // Refactor render of popualList
 // created popularMovie and searchREsults components, has to make component for the repetetive code in them
 // not a stable work
-// 40 movies at the start instead of 20
+// Fixed. 40 movies at the start instead of 20
 
 // CSS markup
 
