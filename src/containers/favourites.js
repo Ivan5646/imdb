@@ -11,6 +11,10 @@ class Favourites extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        //const { handle } = "favourites";
+    }
+
     getMovieId(movieId) {
         this.props.getMovieId(movieId);
     }
@@ -30,7 +34,7 @@ class Favourites extends React.Component {
                             this.props.favourites.map((movie) => {
                                 return (
                                     <div>
-                                        <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
+                                        <Link to={`/movie/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
                                             <div className={"movie-card"}>
                                                 <div>{movie.title}</div>
                                                 <img src={movie.img}></img>

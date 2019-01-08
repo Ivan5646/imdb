@@ -31,7 +31,7 @@ class PopularMovie extends React.Component {
                         this.props.popularMovies.map((movie) => {
                             return (
                                 <div>
-                                    <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
+                                    <Link to={`/movie/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
                                         <div className={"movie-card"}>
                                             <div>{movie.title}</div>
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>

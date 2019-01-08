@@ -42,7 +42,9 @@ class Movie extends React.Component{
             )
         } else {
             return (
-                <p>Loading movie...</p>
+                <div>
+                    <p>Loading movie... movie page</p>
+                </div>
             )
         }
     }

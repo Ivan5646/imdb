@@ -30,8 +30,10 @@
 // - Notificate user when movie is already in fav
 // show hide notification. Have to show notification onCLik for a specific movie, how?
 // done - Show that a movie is in favs on movie page (Compulsory)
-// - Be able to add movie to favs from movie page? 
 // - Enable to go to a movie from fav 
+// Why is the fetchMovie action fired when I go to favourties page? Because the code goes insie Movie comp - routing problem?
+// - Be able to add movie to favs from movie page? 
+
 
 // Routing
 // Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
@@ -41,9 +43,9 @@
 
 // Things to do.
 // Refactor render of popualList
-// created popularMovie and searchREsults components, has to make component for the repetetive code in them
+// Done. created popularMovie and searchREsults components, has to make component for the repetetive code in them
 // not a stable work
-// Fixed. 40 movies at the start instead of 20
+// Done. (Fixed) 40 movies at the start instead of 20
 
 // CSS markup
 

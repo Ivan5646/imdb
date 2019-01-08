@@ -20,7 +20,7 @@ class Main extends React.Component {
             <BrowserRouter>
                 <div>
                     <Route exact path="/" component={PopularList} />
-                    <Route path="/:handle" component={Movie} />
+                    <Route path="/movie/:handle" component={Movie} />
                     <Route path="/favourites" component={Favourites} />
                 </div>
             </BrowserRouter>
