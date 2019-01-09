@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import PopularList from './popularList'
 import Movie from './movie'
 import Favourites from './favourites'
+import Header from './header'
 
 class Main extends React.Component {
 
@@ -19,6 +20,7 @@ class Main extends React.Component {
         return (
             <BrowserRouter>
                 <div>
+                    <Header>header</Header>
                     <Route exact path="/" component={PopularList} />
                     <Route path="/movie/:handle" component={Movie} />
                     <Route path="/favourites" component={Favourites} />

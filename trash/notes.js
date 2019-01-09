@@ -23,6 +23,13 @@
 
 
 // Steps.
+// CSS markup
+// pages the app has:
+// 1) Popular movies 
+// 2) Movie page
+// 3) Favourites page
+// has to make header with navigation links
+
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
 // done - Remove from fav
 // done - Persisit to LS
@@ -42,7 +49,7 @@
 
 
 // Things to do.
-// CSS markup
+
 
 // Handle unique key warning
 
