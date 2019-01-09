@@ -7,6 +7,7 @@ import { fetchPopulars, searchMovies } from "../actions/popularActions";
 import { Movie } from './movie';
 import PopularMovie from "./popularMovie";
 import SearchResults from "./searchResults";
+import { Button } from 'reactstrap';
 
 class PopularList extends React.Component {
 
@@ -41,6 +42,7 @@ class PopularList extends React.Component {
                 console.log("popular props", this.props);
                 return (
                     <section className={"movies"}>
+                        <Button color="danger">Danger!</Button>
                         <h3>Popular Movies</h3>
                         <h4>{this.props.popularMovies.length}</h4>
                         <Link to="/favourites">

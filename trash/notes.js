@@ -30,8 +30,8 @@
 // - Notificate user when movie is already in fav
 // show hide notification. Have to show notification onCLik for a specific movie, how?
 // done - Show that a movie is in favs on movie page (Compulsory)
-// - Enable to go to a movie from fav 
-// Why is the fetchMovie action fired when I go to favourties page? Because the code goes insie Movie comp - routing problem?
+// Done. Though not stable. Sometimes movie is not rendered though the data is receieved - Enable to go to a movie from fav 
+// Why is the fetchMovie action fired when I go to favourties page? Because the code goes insie Movie comp (because of <Route path="/:handle" component={Movie} />) - routing problem? In both favourites and movie comp's match.props.path is the same
 // - Be able to add movie to favs from movie page? 
 
 
@@ -42,12 +42,9 @@
 
 
 // Things to do.
-// Refactor render of popualList
-// Done. created popularMovie and searchREsults components, has to make component for the repetetive code in them
-// not a stable work
-// Done. (Fixed) 40 movies at the start instead of 20
-
 // CSS markup
+
+// Handle unique key warning
 
 // - Checks of this type below are unnecessary, remove? How to handle error in render method property of props undefined though it exist in state?
 if (this.props.popularMovies.length) // in render()
@@ -62,6 +59,11 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // Done
+// Refactor render of popualList
+// Done. created popularMovie and searchREsults components, has to make component for the repetetive code in them
+// not a stable work
+// Done. (Fixed) 40 movies at the start instead of 20
+
 // Done. Поле для поиска. !-1
 // Done. Когда ты вводишь туда какой-то текст, должны отобразиться фильмы которые ему соответствуют. Для каждого фильма в списке должен отображаться список жанров (названий жанров, не айдишек), к которым он принадлежит. 
 // Done. Search function is supposed to search in database not among the movies on the page
