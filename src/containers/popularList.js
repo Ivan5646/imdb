@@ -7,7 +7,6 @@ import { fetchPopulars, searchMovies } from "../actions/popularActions";
 import { Movie } from './movie';
 import PopularMovie from "./popularMovie";
 import SearchResults from "./searchResults";
-import { Button } from 'reactstrap';
 
 class PopularList extends React.Component {
 
@@ -41,13 +40,9 @@ class PopularList extends React.Component {
             if (!this.props.searchResults) {
                 console.log("popular props", this.props);
                 return (
-                    <section className={"movies"}>
-                        <Button color="danger">Danger!</Button>
+                    <section className={"movies container-fluid"}>
                         <h3>Popular Movies</h3>
                         <h4>{this.props.popularMovies.length}</h4>
-                        <Link to="/favourites">
-                            <div>Favourites</div>
-                        </Link>
                         <PopularMovie popularMovies={this.props.popularMovies}></PopularMovie>
                         <Waypoint onEnter={this.loadMore}/>
                     </section>

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { logger } from 'redux-logger'
 import reducer from './reducers'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.scss'
 import { loadState, saveState } from "./persistState/localStorage";
 import App from "./components/App"

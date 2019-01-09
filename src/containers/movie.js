@@ -19,7 +19,7 @@ class Movie extends React.Component{
     render(){
         if (this.props.movie.movie && this.props.recommendations) {
             return (
-                <section>
+                <section className={"container-fluid"}>
                     <h4>{this.props.movie.movie.title}</h4>
                     <div>Overview: {this.props.movie.movie.overview}</div>
                     <div>Release date: {this.props.movie.movie.release_date}</div>

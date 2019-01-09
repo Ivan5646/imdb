@@ -5,7 +5,6 @@ import SearchDb from '../containers/searchDb'
 
 const App = () => (
     <div>
-        <SearchDb/>
         <Main />
     </div>
 );
