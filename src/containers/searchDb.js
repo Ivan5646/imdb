@@ -17,7 +17,7 @@ class SearchDb extends React.Component {
 
     render() {
         return (
-            <input placeholder="search database" type="text" onChange={this.searchDb}/>
+            <input placeholder="search..." type="text" onChange={this.searchDb} className={"search-input"}/>
         )
     }
 }

@@ -33,20 +33,20 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="sm">
+                <Navbar light expand="sm" className={"header"}>
                     <NavbarBrand>
-                        <NavLink>
+                        <NavLink className={"header__link"}>
                             <Link to="/">
                                 <div>The App</div>
                             </Link>
                         </NavLink>
                     </NavbarBrand>
-                    <SearchDb/>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
+                        <SearchDb/>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink>
+                                <NavLink className={"header__link"}>
                                     <Link to="/favourites">
                                         <div>Favourites</div>
                                     </Link>

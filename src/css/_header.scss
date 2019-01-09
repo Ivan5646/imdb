@@ -2,5 +2,15 @@
 @import "variables";
 
 .header {
-
+    border-radius: 0;
+    background-color: #24292e;
+    &__link a {
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        &:hover {
+            text-decoration: none;
+            color: hsla(0,0%,100%,.75);
+        }
+    }
 }
