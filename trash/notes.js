@@ -33,6 +33,10 @@
 
 // header toogle menu button is invisible on mobile
 
+// to do
+// - Remove links' underline
+
+
 
 
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
@@ -54,7 +58,8 @@
 
 
 // Things to do.
-
+// - Loading gif
+// - Handle unstable work, a) sometimes movie is not loaded b) when search is removed populars do not appear c) handle search on other pages
 
 // Handle unique key warning
 

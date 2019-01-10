@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from "redux";
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import { getMovieId, removeFromFavourites} from "../actions/popularActions";
 import { Movie } from "./Movie"
 
@@ -33,14 +34,14 @@ class Favourites extends React.Component {
                         {
                             this.props.favourites.map((movie) => {
                                 return (
-                                    <div>
+                                    <div className={"movie-card"}>
                                         <Link to={`/movie/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
-                                            <div className={"movie-card"}>
-                                                <div>{movie.title}</div>
+                                            <div>
                                                 <img src={movie.img}></img>
+                                                <h4 className={"movie-card__title"}>{movie.title}</h4>
                                             </div>
                                         </Link>
-                                        <button onClick={() => {this.removeFromFavourites(movie.id)}}>Remove from favourites</button>
+                                        <Button color="secondary" onClick={() => {this.removeFromFavourites(movie.id)}}>Remove from favourites</Button>
                                     </div>
                                 )
                             })
