@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
+import { Button } from 'reactstrap';
 import {addToFavourites} from "../actions/popularActions";
 import { DoubleNotification } from "../components/doubleNotification";
 
@@ -38,13 +39,13 @@ class MovieBottom extends React.Component {
                         })
                     }
                 </div>
-                <button onClick={ () => {this.addToFavourites(this.props.favourite)}}>
+                <Button color="info" onClick={ () => {this.addToFavourites(this.props.favourite)}} className={"favBtn"}>
                     <DoubleNotification double={
                         this.props.favourites.find((fav) => {return fav.title === this.props.movietTitle})
                     }
                     >
                     </DoubleNotification>
-                </button>
+                </Button>
             </div>
         )
     }

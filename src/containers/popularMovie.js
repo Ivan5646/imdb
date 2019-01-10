@@ -33,8 +33,8 @@ class PopularMovie extends React.Component {
                                 <div className={"movie-card"}>
                                     <Link to={`/movie/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
                                         <div>
-                                            <div>{movie.title}</div>
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>
+                                            <h4 className={"movie-card__title"}>{movie.title}</h4>
                                         </div>
                                     </Link>
                                    <MovieBottom
