@@ -11,7 +11,7 @@ import { getMovieId } from "../actions/popularActions";
 class PopularMovie extends React.Component {
     constructor(props) {
         super(props);
-        this.dbLink = "https://image.tmdb.org/t/p/w400";
+        this.dbLink = "https://image.tmdb.org/t/p/w300";
     }
 
     componentDidMount(){
