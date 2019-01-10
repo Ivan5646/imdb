@@ -327,7 +327,17 @@ testMovieClick();
 // Solved by check if (this.props.genres) { ... }
 
 
+// button error
+// Error: Objects are not valid as a React child (found: object with keys {id, title, img}). If you meant to render a collection of children, use an array instead.
+<button onClick={ () => {this.addToFavourites(this.props.favourite)}}>
+    {
+        this.props.favourites.find(fav => fav.title === this.props.movietTitle ? "Add to favourites" : "In Favourites")
+    }
+</button> 
+
+
 // Recurring propblems
 // export default connect - You likely forgot to export your component
 import PopularMovie from "./popularMovie"; // use this 
 of import {PopularMovie} from "./popularMovie"; // instead of this
+

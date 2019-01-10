@@ -5,13 +5,13 @@ export class DoubleNotification extends React.Component {
         if (this.props.double) {
             return (
                 <div>
-                    <div>This movie is already in favourites</div>
+                    <div>In favourites</div>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <div>not in favs</div>
+                    <div>Add to favourites</div>
                 </div>
             )
         }

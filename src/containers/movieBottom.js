@@ -39,13 +39,12 @@ class MovieBottom extends React.Component {
                     }
                 </div>
                 <button onClick={ () => {this.addToFavourites(this.props.favourite)}}>
-                    Add to Favourites
+                    <DoubleNotification double={
+                        this.props.favourites.find((fav) => {return fav.title === this.props.movietTitle})
+                    }
+                    >
+                    </DoubleNotification>
                 </button>
-                <DoubleNotification double={
-                    this.props.favourites.find((fav) => {return fav.title === this.props.movietTitle})
-                }
-                >
-                </DoubleNotification>
             </div>
         )
     }
