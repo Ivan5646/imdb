@@ -337,6 +337,11 @@ testMovieClick();
 // Solved by check if (this.props.genres) { ... }
 
 
+// Recurring propblems
+// export default connect - You likely forgot to export your component
+import PopularMovie from "./popularMovie"; // use this 
+of import {PopularMovie} from "./popularMovie"; // instead of this
+
 // button error
 // Error: Objects are not valid as a React child (found: object with keys {id, title, img}). If you meant to render a collection of children, use an array instead.
 <button onClick={ () => {this.addToFavourites(this.props.favourite)}}>
@@ -346,8 +351,33 @@ testMovieClick();
 </button> 
 
 
-// Recurring propblems
-// export default connect - You likely forgot to export your component
-import PopularMovie from "./popularMovie"; // use this 
-of import {PopularMovie} from "./popularMovie"; // instead of this
+// movie.props undeifned error
+function mapStateToProps(state){ 
+    return {
+        movie: state.movie.movie,
+}
+// in render props are undefined:
+this.props.movie.poster_path
+
+function mapStateToProps(state){ 
+    return {
+        movie: state.movie,
+}
+// props are fine
+this.props.movie.movie.poster_path
+// redux comonentDidMount does not fire before component render, router problem?
+
+
+
+
+
+//Secondly, to make sure that you're not trying to map an un-initialized array, use this:
+<ul>{(this.props.users || []).map( user => <li>{user.someProperty}</li> )}</ul>
+
+
+
+
+
+
+
 

@@ -3,7 +3,7 @@ const popularReducer = (state = {allMovies: []}, action) => {
         case 'REQUEST_POPULAR':
             return { ...state, loading: true };
         case 'RECEIVE_POPULAR':
-            return { ...state, allMovies: state.allMovies.concat(action.result.results), unfiltered: state.allMovies.concat(action.result.results), loading: false };
+            return { ...state, allMovies: state.allMovies.concat(action.result.results), loading: false };
         default:
             return state;
     }

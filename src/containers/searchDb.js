@@ -11,7 +11,6 @@ class SearchDb extends React.Component {
     }
 
     searchDb(event) {
-        console.log("searchDb", event.target.value);
         this.props.fetchDB(event.target.value);
     }
 
@@ -23,7 +22,6 @@ class SearchDb extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log("searchDb state", state);
     return {
         searchResult: state.searchResult
     }

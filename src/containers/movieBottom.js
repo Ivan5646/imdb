@@ -11,7 +11,6 @@ class MovieBottom extends React.Component {
     }
 
     addToFavourites(movie) {
-        console.log(movie);
         this.props.addToFavourites(movie);
     }
 

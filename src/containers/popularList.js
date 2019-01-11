@@ -38,7 +38,6 @@ class PopularList extends React.Component {
 
     render(){
             if (!this.props.searchResults) {
-                console.log("popular props", this.props);
                 return (
                     <section className={"movies container-fluid"}>
                         <h3>Popular Movies</h3>
@@ -58,7 +57,6 @@ class PopularList extends React.Component {
 }
 
 function mapStateToProps(state){
-    console.log("popularList state", state);
         return {
             popularMovies: state.popularMovies.allMovies, // popularMovies is the name of the reducer
             searchResults: state.searchDbResults.searchResult,

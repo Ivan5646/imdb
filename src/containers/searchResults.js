@@ -22,7 +22,6 @@ class SearchResults extends React.Component {
     }
 
     render() {
-        console.log("popluarMovie props", this.props);
         if (this.props.genres) {
             return (
                 <div className={"movies__block"}>

@@ -25,7 +25,6 @@ class Favourites extends React.Component {
     }
 
     render() {
-        console.log("favourites this.props", this.props);
         if (this.props.favourites.length) {
             return (
                 <div className={"container-fluid"}>
