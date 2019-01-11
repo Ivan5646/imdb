@@ -42,9 +42,10 @@ class Movie extends React.Component{
                             </DoubleNotification>
                             <h4>Recommendations</h4>
                             <div className={"movie-page__recommendations"}>{
-                                this.props.recommendations.map((movie) => {
+                                this.props.recommendations.map((movie, index, arr) => {
                                     return (
-                                        <div key={movie.id}>{movie.title}</div>
+                                        arr.length-1 !== index ? <div key={movie.id}>{movie.title},</div> : <div key={movie.id}>{movie.title}.</div>
+
                                     )
                                 })
                             }</div>
