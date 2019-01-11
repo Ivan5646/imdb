@@ -34,7 +34,7 @@ class Movie extends React.Component{
                             </div>
                             <div className={"movie-page__info-blocks"}>
                                 <h5>Budget:</h5>
-                                <span>{this.props.movie.movie.budget}</span>
+                                <span>{`${this.props.movie.movie.budget / 1000000} million`}</span>
                             </div>
                             <DoubleNotification double={
                                 this.props.favourites.find((fav) => {return fav.title === this.props.movie.movie.title})

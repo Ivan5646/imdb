@@ -25,9 +25,9 @@
 // Steps.
 // CSS markup
 // pages the app has:
-// 1) Popular movies 
-// 2) Movie page
-// 3) Favourites page
+// 1) Popular movies - layout done
+// 2) Movie page - layout done (roughly)
+// 3) Favourites - page layout done
 // has to make header with navigation links
 // layout first, colours are secondary
 
@@ -36,6 +36,7 @@
 // to do
 // - Remove links' underline
 // - Make fixed youtube style header
+// - diferent colour for favs on popular page
 
 
 
@@ -59,8 +60,9 @@
 
 
 // Things to do.
+// - production version, environment? remove redux-logger, console.logs
 // - Loading gif
-// - Handle unstable work, a) sometimes movie is not loaded b) when search is removed populars do not appear c) handle search on other pages
+// - Handle unstable work, a)!! sometimes movie is not loaded b)!! when search is removed populars do not appear c)!! handle search on other pages
 
 // Handle unique key warning
 
