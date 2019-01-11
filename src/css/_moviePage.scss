@@ -1,0 +1,28 @@
+.movie-page {
+    display: flex;
+    justify-content: center;
+
+    img {
+        margin-right: 20px;
+    }
+
+    &__info-blocks {
+        display: flex;
+        //justify-content: center;
+        align-items: baseline;
+
+        h5 {
+            margin-right: 4px;
+            margin-bottom: 0;
+        }
+    }
+
+    &__recommendations {
+        display: flex;
+        flex-wrap: wrap;
+
+        div {
+            margin-right: 2px;
+        }
+    }
+}

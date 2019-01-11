@@ -8,6 +8,7 @@ class Movie extends React.Component{
 
     constructor(props){
         super(props);
+        this.dbLink = "https://image.tmdb.org/t/p/w300";
     }
 
     componentDidMount(){
@@ -17,27 +18,38 @@ class Movie extends React.Component{
     }
 
     render(){
+        console.log("movie props", this.props.movie.movie);
         if (this.props.movie.movie && this.props.recommendations) {
             return (
                 <section className={"container-fluid"}>
-                    <h4>{this.props.movie.movie.title}</h4>
-                    <div>Overview: {this.props.movie.movie.overview}</div>
-                    <div>Release date: {this.props.movie.movie.release_date}</div>
-                    <div>Budget: {this.props.movie.movie.budget}</div>
-                    <DoubleNotification double={
-                        this.props.favourites.find((fav) => {return fav.title === this.props.movie.movie.title})
-                    }>
-                    </DoubleNotification>
-                    <h4>Recommendations</h4>
-                    <div>{
-                        this.props.recommendations.map((movie) => {
-                            return (
-                                <div>
-                                    <div key={movie.id}>{movie.title}</div>
-                                </div>
-                            )
-                        })
-                    }</div>
+                    <div className={"movie-page"}>
+                        <img src={`${this.dbLink}${this.props.movie.movie.poster_path}`}></img>
+                        <div className={"movie-page__info"}>
+                            <h4>{this.props.movie.movie.title}</h4>
+                            <h5>Overview</h5>
+                            <div>{this.props.movie.movie.overview}</div>
+                            <div className={"movie-page__info-blocks"}>
+                                <h5>Release date:</h5>
+                                <span>{this.props.movie.movie.release_date}</span>
+                            </div>
+                            <div className={"movie-page__info-blocks"}>
+                                <h5>Budget:</h5>
+                                <span>{this.props.movie.movie.budget}</span>
+                            </div>
+                            <DoubleNotification double={
+                                this.props.favourites.find((fav) => {return fav.title === this.props.movie.movie.title})
+                            }>
+                            </DoubleNotification>
+                            <h4>Recommendations</h4>
+                            <div className={"movie-page__recommendations"}>{
+                                this.props.recommendations.map((movie) => {
+                                    return (
+                                        <div key={movie.id}>{movie.title}</div>
+                                    )
+                                })
+                            }</div>
+                        </div>
+                    </div>
                 </section>
             )
         } else {

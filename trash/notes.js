@@ -35,6 +35,7 @@
 
 // to do
 // - Remove links' underline
+// - Make fixed youtube style header
 
 
 
@@ -72,7 +73,9 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 // https://stackoverflow.com/questions/42063854/arrow-function-syntax-not-working-with-webpack
 
 
-
+// Suggestions
+// Make tabs on movie page like here https://www.allmovie.com/movie/bumblebee-v691426 ?
+//
 
 
 // Done
