@@ -14,7 +14,6 @@ class Movie extends React.Component{
     componentDidMount(){
         const movieId = this.props.movieId;
         this.props.fetchMovie(this.props.movieId).then(() => {
-            console.log("then fetchRecommendations");
             this.props.fetchRecommendations(movieId)
         });
 
@@ -22,8 +21,6 @@ class Movie extends React.Component{
     }
 
     render(){
-        console.log("this.props.movie", this.props.movie);
-       // console.log("this.props.movie.recommendations", this.props.movie.recommendations);
         if (this.props.movie) {
             return (
                 <section className={"container-fluid"}>

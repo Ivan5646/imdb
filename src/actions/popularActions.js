@@ -4,9 +4,10 @@ export const requestPopualrs = () => ({
     type: 'REQUEST_POPULAR',
 });
 
-export const receivedPopulars = (result) => ({
+export const receivedPopulars = (result, page) => ({
     type: 'RECEIVE_POPULAR',
     result: result,
+    page: page
 });
 
 export function fetchPopulars(page) {
@@ -18,7 +19,7 @@ export function fetchPopulars(page) {
                 error => console.log('An error occurred.', error),
             )
             .then((result) => {
-                    dispatch(receivedPopulars(result));
+                    dispatch(receivedPopulars(result, page));
                 },
             );
     };
@@ -64,7 +65,7 @@ export const receivedRecommendations = (result) => ({
     result: result
 });
 
-export function fetchRecommendations(movieId) {
+export function fetchRecommendations(movieId) { //movieId is undefined on moviePage
     return function(dispatch) {
         return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apiKey}&language=en-US&page=1`)
             .then(

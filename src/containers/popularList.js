@@ -20,7 +20,7 @@ class PopularList extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchPopulars();
+        this.props.fetchPopulars(1);
     }
 
     loadMore() {

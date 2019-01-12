@@ -62,7 +62,11 @@
 // Things to do.
 // - production version, environment? remove redux-logger, console.logs
 // - Loading gif
-// - Handle unstable work, a)!! sometimes movie is not loaded b)!! when search is removed populars do not appear c)!! handle search on other pages
+// - Handle unstable work, 
+// a)Done. !! sometimes movie is not loaded 
+// b)!! when search is removed populars do not appear 
+// c)!! handle search on other pages
+// d) when going back to app page extra movies are fetched
 
 // Handle unique key warning
 
@@ -367,12 +371,6 @@ function mapStateToProps(state){
 this.props.movie.movie.poster_path
 // redux comonentDidMount does not fire before component render, router problem?
 
-
-
-
-
-//Secondly, to make sure that you're not trying to map an un-initialized array, use this:
-<ul>{(this.props.users || []).map( user => <li>{user.someProperty}</li> )}</ul>
 
 
 
