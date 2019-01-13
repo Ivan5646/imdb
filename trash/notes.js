@@ -23,6 +23,7 @@
 
 
 // Steps.
+
 // CSS markup
 // pages the app has:
 // 1) Popular movies - layout done
@@ -60,16 +61,25 @@
 
 
 // Things to do.
+// - budget 0 million
 // - production version, environment? remove redux-logger, console.logs
 // - Loading gif
 // - Handle unstable work, 
 // a)Done. !! sometimes movie is not loaded 
 // b) Done. (but has to improve, handle it before the stage of action, so as the fetch request, sending) !! when search is removed populars do not appear 
-// probab;y have to implement the diferent way, not: if (!this.props.searchResults)
+// probably have to implement the diferent way, not: if (!this.props.searchResults)
 // c)!! handle search on other pages
-// d) when going back to app page extra movies are fetched
+// go to / on enter 
+// https://stackoverflow.com/questions/44534647/react-router-dom-v4-redirect-to-different-route-upon-input-enter-key-press
+// how do I access router props in seatchDb?
+// problem when opening /search - empty string in input? 
+
+
+// d) Done. when going back to app page extra movies are fetched
 
 // Handle unique key warning
+
+// <a> inside <a> warning at search
 
 // Improve. When backspacing search string don't send action.
 
