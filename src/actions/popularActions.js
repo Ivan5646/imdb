@@ -92,9 +92,10 @@ export const requestDB = () => ({
     type: 'REQUEST_DB',
 });
 
-export const receivedDB = (result) => ({
+export const receivedDB = (result, query) => ({
     type: 'RECEIVE_DB',
     result: result,
+    query: query
 });
 
 export const fetchDB = (query) => {
@@ -106,7 +107,7 @@ export const fetchDB = (query) => {
                 error => console.log('An error occurred.', error),
             )
             .then((result) => {
-                    dispatch(receivedDB(result));
+                    dispatch(receivedDB(result, query));
                 },
             );
     }

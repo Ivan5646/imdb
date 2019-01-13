@@ -3,7 +3,7 @@ const searchDbReducer =  (state = {}, action) => {
         case 'REQUEST_DB':
             return {...state, loading: true};
         case 'RECEIVE_DB':
-            return {...state, searchResult: action.result.results, loading: false};
+            return {...state, searchResult: action.query === "" ? null : action.result.results, loading: false};
         default:
             return state;
     }
