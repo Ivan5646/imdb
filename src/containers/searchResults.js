@@ -28,9 +28,9 @@ class SearchResults extends React.Component {
                     {
                         this.props.searchResults.map((movie, index) => {
                             return (
-                                <div>
-                                    <Link to={`/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
-                                        <div className={"movie-card"} key={index}>
+                                <div className={"movie-card"}>
+                                    <Link to={`/movie/${movie.id}`} component={Movie} key={movie.id} onClick={() => {this.getMovieId(movie.id)}}>
+                                        <div key={index}>
                                             <div>{movie.title}</div>
                                             <img src={`${this.dbLink}${movie.poster_path}`}></img>
                                         </div>
