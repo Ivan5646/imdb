@@ -47,7 +47,8 @@
 
 // Things to do.
 // Before production
-// - movie mob layout
+// - ? load on scroll first time problem? when coming from favs
+// Done. - movie mob layout
 // - img sticking out ex T-34
 
 // - budget 0 million
