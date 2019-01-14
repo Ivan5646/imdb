@@ -36,6 +36,7 @@ class SearchResults extends React.Component {
                                         </div>
                                     </Link>
                                     <MovieBottom
+                                        movieId={movie.id}
                                         genres={this.props.genres.genres}
                                         movieGenres={movie.genre_ids}
                                         favourite={{
@@ -43,7 +44,7 @@ class SearchResults extends React.Component {
                                             title: movie.title,
                                             img: `${this.dbLink}${movie.poster_path}`
                                         }}
-                                        movietTitle={movie.title}
+                                        movieTitle={movie.title}
                                     />
                                 </div>
                             )

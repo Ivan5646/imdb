@@ -37,7 +37,6 @@
 // to do
 // - Remove links' underline
 // - Make fixed youtube style header
-// - diferent colour for favs on popular page
 
 
 // Routing
@@ -48,21 +47,14 @@
 
 // Things to do.
 // Before production
-// Done. - hanlde add to favs on movie page
+// -searh results fab button
+// - movie mob layout
 
 // - Add, remove movie single button
 // - budget 0 million
 // - production version, environment? remove redux-logger, console.logs
 // - Loading gif
-// - Handle unstable work, 
-// a)Done. !! sometimes movie is not loaded 
-// b) Done. (but has to improve, handle it before the stage of action, so as the fetch request, sending) !! when search is removed populars do not appear 
-// probably have to implement the diferent way, not: if (!this.props.searchResults)
-// c)!! handle search on other pages
-// go to / on enter 
-// https://stackoverflow.com/questions/44534647/react-router-dom-v4-redirect-to-different-route-upon-input-enter-key-press
-// how do I access router props in seatchDb?
-// problem when opening /search - empty string in input? 
+
 
 
 // d) Done. when going back to app page extra movies are fetched
@@ -88,6 +80,18 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // Done
+// - Handle unstable work, 
+// a)Done. !! sometimes movie is not loaded 
+// b) Done. (but has to improve, handle it before the stage of action, so as the fetch request, sending) !! when search is removed populars do not appear 
+// probably have to implement the diferent way, not: if (!this.props.searchResults)
+// c)Done. (search is at app page only)!! handle search on other pages
+// go to / on enter 
+// https://stackoverflow.com/questions/44534647/react-router-dom-v4-redirect-to-different-route-upon-input-enter-key-press
+// how do I access router props in seatchDb?
+// problem when opening /search - empty string in input? 
+
+// Done. - hanlde add to favs on movie page
+
 //  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
 // done - Remove from fav
 // done - Persisit to LS

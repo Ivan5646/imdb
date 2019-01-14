@@ -40,7 +40,7 @@ class PopularList extends React.Component {
             if (!this.props.searchResults) {
                 return (
                     <section className={"movies container-fluid"}>
-                        <h3>Popular Movies</h3>
+                        <h3>Popular Now</h3>
                         <h4>{this.props.popularMovies.length}</h4>
                         <PopularMovie popularMovies={this.props.popularMovies}></PopularMovie>
                         <Waypoint onEnter={this.loadMore}/>
