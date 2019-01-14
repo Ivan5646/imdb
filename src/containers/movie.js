@@ -9,6 +9,8 @@ class Movie extends React.Component{
     constructor(props){
         super(props);
         this.dbLink = "https://image.tmdb.org/t/p/w300";
+
+        this.showBudget = this.showBudget.bind(this);
     }
 
     componentDidMount(){
@@ -22,6 +24,14 @@ class Movie extends React.Component{
 
     addToFavourites(movie) {
         this.props.addToFavourites(movie);
+    }
+
+    showBudget(budget) {
+        if (budget > 0) {
+            return `${budget / 1000000} million`;
+        } else {
+            return "N/A"
+        }
     }
 
     render(){
@@ -40,7 +50,7 @@ class Movie extends React.Component{
                             </div>
                             <div className={"movie-page__info-blocks"}>
                                 <h5>Budget:</h5>
-                                <span>{`${this.props.movie.budget / 1000000} million`}</span>
+                                <span>{this.showBudget(this.props.movie.budget)}</span>
                             </div>
                             <h4 className={"movie-page__recommendations-header"}>Recommendations</h4>
                             <div className={"movie-page__recommendations"}>
