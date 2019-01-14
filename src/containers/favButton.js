@@ -23,7 +23,9 @@ class FavButton extends React.Component {
         if (this.props.favourites.find((fav) => {return fav.title === this.props.movieTitle})) {
             // remove
             return (
-                <Button color="secondary" onClick={() => {this.removeFromFavourites(this.props.movieId)}}>Remove from favourites</Button>
+                <Button color="secondary" onClick={() => {this.removeFromFavourites(this.props.movieId)}} className={"favBtn"}>
+                    Remove from favourites
+                </Button>
             )
         } else {
             // add

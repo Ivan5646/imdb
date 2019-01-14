@@ -40,10 +40,6 @@
 // - diferent colour for favs on popular page
 
 
-
-
-
-
 // Routing
 // Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
 // so when I get to any route redux store is resetted? It does so with /favourites.
@@ -52,7 +48,7 @@
 
 // Things to do.
 // Before production
-// - hanlde add to favs on movie page
+// Done. - hanlde add to favs on movie page
 
 // - Add, remove movie single button
 // - budget 0 million

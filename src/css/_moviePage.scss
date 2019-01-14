@@ -6,6 +6,11 @@
         margin-right: 20px;
     }
 
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__info-blocks {
         display: flex;
         //justify-content: center;
@@ -24,5 +29,10 @@
         div {
             margin-right: 4px;
         }
+    }
+
+    &__favBtn {
+        max-width: 200px;
+        margin-top: auto;
     }
 }

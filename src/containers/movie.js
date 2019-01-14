@@ -42,15 +42,6 @@ class Movie extends React.Component{
                                 <h5>Budget:</h5>
                                 <span>{`${this.props.movie.budget / 1000000} million`}</span>
                             </div>
-                            <FavButton
-                                movieId={this.props.movie.id}
-                                movieTitle={this.props.movie.title}
-                                favourite={{
-                                    id: this.props.movie.id,
-                                    title: this.props.movie.title,
-                                    img: `${this.dbLink}${this.props.movie.poster_path}`
-                                }}
-                            />
                             <h4>Recommendations</h4>
                             <div className={"movie-page__recommendations"}>{
                                 (this.props.recommendations || []).map((movie, index, arr) => {
@@ -60,6 +51,17 @@ class Movie extends React.Component{
                                     )
                                 })
                             }</div>
+                            <div className={"movie-page__favBtn"}>
+                                <FavButton
+                                    movieId={this.props.movie.id}
+                                    movieTitle={this.props.movie.title}
+                                    favourite={{
+                                        id: this.props.movie.id,
+                                        title: this.props.movie.title,
+                                        img: `${this.dbLink}${this.props.movie.poster_path}`
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
                 </section>
