@@ -61,6 +61,9 @@
 
 
 // Things to do.
+// Before production
+// - hanlde add to favs on movie page
+
 // - budget 0 million
 // - production version, environment? remove redux-logger, console.logs
 // - Loading gif

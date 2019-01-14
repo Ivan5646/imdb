@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
-import { fetchMovie, fetchRecommendations } from '../actions/popularActions';
+import { Button } from 'reactstrap';
+import { fetchMovie, fetchRecommendations, addToFavourites } from '../actions/popularActions';
 import { DoubleNotification } from '../components/doubleNotification'
 
 class Movie extends React.Component{
@@ -18,6 +19,10 @@ class Movie extends React.Component{
         });
 
         //const { handle } = this.props.match.params
+    }
+
+    addToFavourites(movie) {
+        this.props.addToFavourites(movie);
     }
 
     render(){
@@ -38,10 +43,18 @@ class Movie extends React.Component{
                                 <h5>Budget:</h5>
                                 <span>{`${this.props.movie.budget / 1000000} million`}</span>
                             </div>
-                            <DoubleNotification double={
-                                this.props.favourites.find((fav) => {return fav.title === this.props.movie.title})
-                            }>
-                            </DoubleNotification>
+                            <Button color="info" onClick={ () => {this.addToFavourites({
+                                id: this.props.movie.id,
+                                title: this.props.movie.title,
+                                img: `${this.dbLink}${this.props.movie.poster_path}`
+                            })}}
+                            className={"favBtn"}>
+                                <DoubleNotification double={
+                                    this.props.favourites.find((fav) => {return fav.title === this.props.movie.title})
+                                }
+                                >
+                                </DoubleNotification>
+                            </Button>
                             <h4>Recommendations</h4>
                             <div className={"movie-page__recommendations"}>{
                                 (this.props.recommendations || []).map((movie, index, arr) => {
@@ -75,7 +88,7 @@ function mapStateToProps(state){
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({fetchMovie: fetchMovie,fetchRecommendations: fetchRecommendations}, dispatch)
+    return bindActionCreators({fetchMovie: fetchMovie,fetchRecommendations: fetchRecommendations, addToFavourites: addToFavourites}, dispatch)
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Movie); // this is now a container

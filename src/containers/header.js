@@ -20,6 +20,7 @@ class Header extends React.Component {
         super(props);
 
         this.toggle = this.toggle.bind(this);
+        this.displaySearchBar = this.displaySearchBar.bind(this);
         this.state = {
             isOpen: false
         };
@@ -28,6 +29,14 @@ class Header extends React.Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    displaySearchBar() {
+        if (document.location.href === "http://localhost:8080/") { // fix for production
+            return (
+                <SearchDb />
+            )
+        }
     }
 
     render() {
@@ -43,7 +52,7 @@ class Header extends React.Component {
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <SearchDb/>
+                        {this.displaySearchBar()}
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <NavLink className={"header__link"}>
