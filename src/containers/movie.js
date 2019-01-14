@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux';
-import { Button } from 'reactstrap';
 import { fetchMovie, fetchRecommendations, addToFavourites } from '../actions/popularActions';
-import { DoubleNotification } from '../components/doubleNotification'
+import FavButton from './favButton'
 
 class Movie extends React.Component{
 
@@ -43,18 +42,15 @@ class Movie extends React.Component{
                                 <h5>Budget:</h5>
                                 <span>{`${this.props.movie.budget / 1000000} million`}</span>
                             </div>
-                            <Button color="info" onClick={ () => {this.addToFavourites({
-                                id: this.props.movie.id,
-                                title: this.props.movie.title,
-                                img: `${this.dbLink}${this.props.movie.poster_path}`
-                            })}}
-                            className={"favBtn"}>
-                                <DoubleNotification double={
-                                    this.props.favourites.find((fav) => {return fav.title === this.props.movie.title})
-                                }
-                                >
-                                </DoubleNotification>
-                            </Button>
+                            <FavButton
+                                movieId={this.props.movie.id}
+                                movieTitle={this.props.movie.title}
+                                favourite={{
+                                    id: this.props.movie.id,
+                                    title: this.props.movie.title,
+                                    img: `${this.dbLink}${this.props.movie.poster_path}`
+                                }}
+                            />
                             <h4>Recommendations</h4>
                             <div className={"movie-page__recommendations"}>{
                                 (this.props.recommendations || []).map((movie, index, arr) => {

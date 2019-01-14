@@ -42,16 +42,6 @@
 
 
 
-//  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
-// done - Remove from fav
-// done - Persisit to LS
-// done - Check for doubles, 
-// - Notificate user when movie is already in fav
-// show hide notification. Have to show notification onCLik for a specific movie, how?
-// done - Show that a movie is in favs on movie page (Compulsory)
-// Done. Though not stable. Sometimes movie is not rendered though the data is receieved - Enable to go to a movie from fav 
-// Why is the fetchMovie action fired when I go to favourties page? Because the code goes insie Movie comp (because of <Route path="/:handle" component={Movie} />) - routing problem? In both favourites and movie comp's match.props.path is the same
-// - Be able to add movie to favs from movie page? 
 
 
 // Routing
@@ -64,6 +54,7 @@
 // Before production
 // - hanlde add to favs on movie page
 
+// - Add, remove movie single button
 // - budget 0 million
 // - production version, environment? remove redux-logger, console.logs
 // - Loading gif
@@ -101,6 +92,17 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // Done
+//  Реализуйте возможность добавлять фильмы в избранное как со списка, так и на странице с отдельным фильмом. Список таких фильмов сохраняйте локально (localStorage, например). Предусмотрите просмотр списка с избранными фильмами где-то в приложении и удаление из избранного. Также предусмотрите отображение на карточке с фильмом и его странице информации о том, что этот фильм добавлен в избранное.
+// done - Remove from fav
+// done - Persisit to LS
+// done - Check for doubles, 
+// - Notificate user when movie is already in fav
+// show hide notification. Have to show notification onCLik for a specific movie, how?
+// done - Show that a movie is in favs on movie page (Compulsory)
+// Done. Though not stable. Sometimes movie is not rendered though the data is receieved - Enable to go to a movie from fav 
+// Why is the fetchMovie action fired when I go to favourties page? Because the code goes insie Movie comp (because of <Route path="/:handle" component={Movie} />) - routing problem? In both favourites and movie comp's match.props.path is the same
+// Done. - Be able to add movie to favs from movie page? 
+
 // Refactor render of popualList
 // Done. created popularMovie and searchREsults components, has to make component for the repetetive code in them
 // not a stable work
