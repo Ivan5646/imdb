@@ -31,7 +31,7 @@ class Movie extends React.Component{
                     <div className={"movie-page"}>
                         <img src={`${this.dbLink}${this.props.movie.poster_path}`}></img>
                         <div className={"movie-page__info"}>
-                            <h4>{this.props.movie.title}</h4>
+                            <h4 className={"movie-page__title"}>{this.props.movie.title}</h4>
                             <h5>Overview</h5>
                             <div>{this.props.movie.overview}</div>
                             <div className={"movie-page__info-blocks"}>
@@ -42,15 +42,15 @@ class Movie extends React.Component{
                                 <h5>Budget:</h5>
                                 <span>{`${this.props.movie.budget / 1000000} million`}</span>
                             </div>
-                            <h4>Recommendations</h4>
-                            <div className={"movie-page__recommendations"}>{
-                                (this.props.recommendations || []).map((movie, index, arr) => {
+                            <h4 className={"movie-page__recommendations-header"}>Recommendations</h4>
+                            <div className={"movie-page__recommendations"}>
+                                {(this.props.recommendations || []).map((movie, index, arr) => {
                                     return (
                                         arr.length-1 !== index ? <div key={movie.id}>{movie.title},</div> : <div key={movie.id}>{movie.title}.</div>
 
                                     )
-                                })
-                            }</div>
+                                })}
+                            </div>
                             <div className={"movie-page__favBtn"}>
                                 <FavButton
                                     movieId={this.props.movie.id}

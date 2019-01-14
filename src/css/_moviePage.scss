@@ -1,9 +1,18 @@
 .movie-page {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 
     img {
         margin-right: 20px;
+    }
+
+    &__title {
+        margin-bottom: 10px !important;
+    }
+
+    h4, h5 {
+        margin: 0;
     }
 
     &__info {
@@ -16,10 +25,19 @@
         //justify-content: center;
         align-items: baseline;
 
+        &:last-of-type {
+            margin-bottom: 10px;
+            color: red;
+        }
+
         h5 {
             margin-right: 4px;
             margin-bottom: 0;
         }
+    }
+
+    &__recommendations-header {
+        margin-top: 10px !important;
     }
 
     &__recommendations {
@@ -33,6 +51,26 @@
 
     &__favBtn {
         max-width: 200px;
-        margin-top: auto;
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .movie-page {
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            margin: 0 0 10px 0;
+            width: 70%;
+        }
+
+        &__title {
+            text-align: center;
+        }
+
+        &__favBtn {
+            align-self: center;
+        }
     }
 }

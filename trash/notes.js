@@ -47,10 +47,9 @@
 
 // Things to do.
 // Before production
-// -searh results fab button
 // - movie mob layout
+// - img sticking out ex T-34
 
-// - Add, remove movie single button
 // - budget 0 million
 // - production version, environment? remove redux-logger, console.logs
 // - Loading gif
