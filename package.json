@@ -1,7 +1,7 @@
 {
-  "name": "reduxasync",
+  "name": "movie database",
   "version": "1.0.0",
-  "description": "simple App Redux Async App",
+  "description": "movie database app",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

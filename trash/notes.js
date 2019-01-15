@@ -47,21 +47,15 @@
 
 // Things to do.
 // Before production
-// - Loading gif
-// - Remove links' underline
-// - ? load on scroll first time problem? when coming from favs
-
-
+if (document.location.href === "http://localhost:8080/") { // fix for production
 // - production version, environment? remove redux-logger, console.logs
 
 
 
-
-
-
-// Handle unique key warning
-
-// <a> inside <a> warning at search
+// - ? Remove links' underline
+// - ? load on scroll first time problem? when coming from favs
+// - Handle unique key warning
+// - <a> inside <a> warning at search
 
 // Improve. When backspacing search string don't send action.
 
@@ -80,6 +74,7 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // Done
+// Done. - Loading gif
 // Done. - budget 0 million
 // Done. - movie mob layout
 // Done. - img sticking out ex T-34
