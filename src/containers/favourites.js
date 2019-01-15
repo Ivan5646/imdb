@@ -28,7 +28,6 @@ class Favourites extends React.Component {
         if (this.props.favourites.length) {
             return (
                 <div className={"container-fluid"}>
-                    <h3>Favourites</h3>
                     <div className={"movies__block"}>
                         {
                             this.props.favourites.map((movie) => {

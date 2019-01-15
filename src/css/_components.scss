@@ -17,3 +17,20 @@ input:focus{
     background-image: url("../img/loader.gif");
     background-size: 100%;
 }
+
+.navbar-toggler {
+    background-color: #fff;
+}
+
+//@media only screen and (max-width: 480px) {
+//    .navbar-brand {
+//        margin-right: 100%;
+//    }
+//}
+
+@media only screen and (max-width: 575px) {
+    .search-input {
+        margin-top: 14px;
+        width: 100%;
+    }
+}
