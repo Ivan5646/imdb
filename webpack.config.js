@@ -22,7 +22,8 @@ module.exports = {
                     options: { minimize: true }
                   }
                 ]
-              }
+              },
+            { test: /\.(png|jpg|gif)$/, loader: 'file-loader', options: {} }
         ]
     },
     devServer: {

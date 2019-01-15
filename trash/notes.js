@@ -35,7 +35,7 @@
 // header toogle menu button is invisible on mobile
 
 // to do
-// - Remove links' underline
+
 // - Make fixed youtube style header
 
 
@@ -47,17 +47,17 @@
 
 // Things to do.
 // Before production
-// - ? load on scroll first time problem? when coming from favs
-// Done. - movie mob layout
-// - img sticking out ex T-34
-
-// - budget 0 million
-// - production version, environment? remove redux-logger, console.logs
 // - Loading gif
+// - Remove links' underline
+// - ? load on scroll first time problem? when coming from favs
+
+
+// - production version, environment? remove redux-logger, console.logs
 
 
 
-// d) Done. when going back to app page extra movies are fetched
+
+
 
 // Handle unique key warning
 
@@ -80,6 +80,12 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 
 // Done
+// Done. - budget 0 million
+// Done. - movie mob layout
+// Done. - img sticking out ex T-34
+
+// d) Done. when going back to app page extra movies are fetched
+
 // - Handle unstable work, 
 // a)Done. !! sometimes movie is not loaded 
 // b) Done. (but has to improve, handle it before the stage of action, so as the fetch request, sending) !! when search is removed populars do not appear 

@@ -78,9 +78,7 @@ class Movie extends React.Component{
             )
         } else {
             return (
-                <div>
-                    <p>Loading movie... movie page</p>
-                </div>
+                <div className={"loading"}></div>
             )
         }
     }

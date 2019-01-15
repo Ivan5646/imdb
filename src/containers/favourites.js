@@ -50,7 +50,7 @@ class Favourites extends React.Component {
             )
         } else {
             return (
-                <div>Loading favourties...</div>
+                <div className={"loading"}>Loading favourties...</div>
             )
         }
 
