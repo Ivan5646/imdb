@@ -49,7 +49,7 @@ class Favourites extends React.Component {
             )
         } else {
             return (
-                <div>Add movies...</div>
+                <div className={"container-fluid"}>Add movies...</div>
             )
         }
 

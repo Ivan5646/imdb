@@ -40,6 +40,7 @@
 
 
 // Routing
+// open movie on right click!
 // Link routing. Be able to paste the link to adress bar and have the movie (which was previsouly opened on click) there.
 // so when I get to any route redux store is resetted? It does so with /favourites.
 
@@ -70,7 +71,7 @@ if (state.popularMovies.allMovies) // in mapStateToProps()
 
 // Suggestions
 // Make tabs on movie page like here https://www.allmovie.com/movie/bumblebee-v691426 ?
-//
+// write tests
 
 
 // Done
@@ -398,3 +399,6 @@ this.props.movie.movie.poster_path
 
 
 
+// npm run build  - to create a bundle 
+// repalce src="/main.js" to src="main.js"
+// remove loger applyMiddleware(thunk, logger)
