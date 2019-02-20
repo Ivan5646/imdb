@@ -32,11 +32,9 @@ class Header extends React.Component {
     }
 
     displaySearchBar() {
-        if (document.location.href === "http://localhost:8080/") { // fix for production
             return (
                 <SearchDb />
             )
-        }
     }
 
     render() {
