@@ -15,7 +15,12 @@ class Movie extends React.Component{
 
     componentDidMount(){
         const movieId = this.props.movieId;
-        this.props.fetchMovie(this.props.movieId).then(() => {
+        // extract the movie id from the url and pass it to fetchMovie() if user copy-pastes the link
+        let urlMovieId = document.location.href;
+        urlMovieId = urlMovieId.slice(urlMovieId.indexOf('movie'));
+        urlMovieId = urlMovieId.slice(urlMovieId.indexOf("/"));
+        urlMovieId = urlMovieId.slice(1);
+        this.props.fetchMovie(this.props.movieId || urlMovieId).then(() => {
             this.props.fetchRecommendations(movieId)
         });
 
