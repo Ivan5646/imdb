@@ -14,6 +14,7 @@ import {
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 import SearchDb from './searchDb';
+import history from  '../history'
 
 class Header extends React.Component {
     constructor(props) {
@@ -41,22 +42,16 @@ class Header extends React.Component {
         return (
             <div>
                 <Navbar light expand="sm" className={"header"}>
-                    <NavbarBrand>
-                        <NavLink className={"header__link"}>
-                            <Link to="/">
-                                <div>The App</div>
-                            </Link>
-                        </NavLink>
+                    <NavbarBrand className="header__link" onClick={() => {history.push("/")}}>
+                        The App
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         {this.displaySearchBar()}
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink className={"header__link"}>
-                                    <Link to="/favourites">
-                                        <div>Favourites</div>
-                                    </Link>
+                                <NavLink className={"header__link"} onClick={() => {history.push("/favourites")}}>
+                                    Favourites
                                 </NavLink>
                             </NavItem>
                         </Nav>
