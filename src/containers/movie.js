@@ -14,14 +14,13 @@ class Movie extends React.Component{
     }
 
     componentDidMount(){
-        const movieId = this.props.movieId;
         // extract the movie id from the url and pass it to fetchMovie() if user copy-pastes the link
         let urlMovieId = document.location.href;
         urlMovieId = urlMovieId.slice(urlMovieId.indexOf('movie'));
         urlMovieId = urlMovieId.slice(urlMovieId.indexOf("/"));
         urlMovieId = urlMovieId.slice(1);
         this.props.fetchMovie(this.props.movieId || urlMovieId).then(() => {
-            this.props.fetchRecommendations(movieId)
+            this.props.fetchRecommendations(urlMovieId)
         });
 
         //const { handle } = this.props.match.params
@@ -39,6 +38,41 @@ class Movie extends React.Component{
         }
     }
 
+    showMovieInfo() {
+        return (
+           <div>
+               <h4 className={"movie-page__title"}>{this.props.movie.title}</h4>
+               <h5>Overview</h5>
+               <div>{this.props.movie.overview}</div>
+               <div className={"movie-page__info-blocks"}>
+                   <h5>Release date:</h5>
+                   <span>{this.props.movie.release_date}</span>
+               </div>
+               <div className={"movie-page__info-blocks"}>
+                   <h5>Budget:</h5>
+                   <span>{this.showBudget(this.props.movie.budget)}</span>
+               </div>
+           </div>
+        )
+    }
+
+    showRecommendations() {
+        console.log('this.props.recommendations', this.props.recommendations);
+        return (
+            <div>
+                <h4 className={"movie-page__recommendations-header"}>Recommendations</h4>
+                <div className={"movie-page__recommendations"}>
+                    {(this.props.recommendations || []).map((movie, index, arr) => {
+                        return (
+                            arr.length-1 !== index ? <div key={movie.id}>{movie.title},</div> : <div key={movie.id}>{movie.title}.</div>
+
+                        )
+                    })}
+                </div>
+            </div>
+        )
+    }
+
     render(){
         if (this.props.movie) {
             return (
@@ -46,26 +80,8 @@ class Movie extends React.Component{
                     <div className={"movie-page"}>
                         <img src={`${this.dbLink}${this.props.movie.poster_path}`}></img>
                         <div className={"movie-page__info"}>
-                            <h4 className={"movie-page__title"}>{this.props.movie.title}</h4>
-                            <h5>Overview</h5>
-                            <div>{this.props.movie.overview}</div>
-                            <div className={"movie-page__info-blocks"}>
-                                <h5>Release date:</h5>
-                                <span>{this.props.movie.release_date}</span>
-                            </div>
-                            <div className={"movie-page__info-blocks"}>
-                                <h5>Budget:</h5>
-                                <span>{this.showBudget(this.props.movie.budget)}</span>
-                            </div>
-                            <h4 className={"movie-page__recommendations-header"}>Recommendations</h4>
-                            <div className={"movie-page__recommendations"}>
-                                {(this.props.recommendations || []).map((movie, index, arr) => {
-                                    return (
-                                        arr.length-1 !== index ? <div key={movie.id}>{movie.title},</div> : <div key={movie.id}>{movie.title}.</div>
-
-                                    )
-                                })}
-                            </div>
+                            {this.showMovieInfo()}
+                            {this.showRecommendations()}
                             <div className={"movie-page__favBtn"}>
                                 <FavButton
                                     movieId={this.props.movie.id}

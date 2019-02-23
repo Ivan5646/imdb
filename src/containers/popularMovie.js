@@ -55,7 +55,7 @@ class PopularMovie extends React.Component {
             )
         } else {
             return (
-                <div clsssName="loading"></div>
+                <div className="loading"></div>
             )
         }
 
